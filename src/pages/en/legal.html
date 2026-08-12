@@ -1,22 +1,3 @@
-<!--
-  ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/en/legal.html · fragments : src/partials/ · données : src/data.json
-  Régénérer : node build.mjs
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Legal notice — Sindal</title>
-<meta name="description" content="Sindal legal notice: publisher, hosting, personal data, end user licence agreement and third-party licences.">
-<meta name="robots" content="index, follow">
-<link rel="icon" href="../img/logo.png" sizes="any">
-<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/legal.html">
-<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/legal.html">
-<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/legal.html">
-<link rel="stylesheet" href="../style.css">
-
 <style>
 /* ── Legal page only ─────────────────────────────────────────────── */
 .legal h2 { font-size: 1.4rem; margin-top: 0; }
@@ -58,27 +39,7 @@ details pre {
 .toc ol { margin: 0; padding-left: 20px; }
 .toc li { margin-bottom: 5px; font-size: .9rem; }
 </style>
-</head>
-
-<body>
-
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><img src="../img/logo.png" alt=""><span class="name">SINDAL</span></a>
-    <nav>
-      <a href="index.html#why">Why</a>
-      <a href="index.html#listen">Listen</a>
-      <a href="index.html#demo">Demo</a>
-      <a href="index.html#sound">Sound</a>
-      <a href="download.html">Download</a>
-    </nav>
-    <select class="lang" aria-label="Langue / Language">
-      <option value="../legal.html">FR</option>
-      <option value="" selected>EN</option>
-    </select>
-  </div>
-</header>
-
+{{> header}}
 
 <div class="page-head">
   <div class="wrap-narrow" data-stagger>
@@ -91,7 +52,7 @@ details pre {
 
     <p class="notice" data-reveal>
       <strong>Reference version.</strong> This page is a translation provided for convenience. The
-      <a href="../legal.html">French version</a> is the reference text and prevails in the event of any
+      <a href="{{rel}}legal.html">French version</a> is the reference text and prevails in the event of any
       discrepancy.
     </p>
 
@@ -113,9 +74,9 @@ details pre {
   <div class="wrap-narrow" data-stagger>
     <h2 data-reveal>1. Publisher</h2>
     <table class="id" data-reveal>
-      <tr><th>Publisher of the site and software</th><td>Sindal</td></tr>
-      <tr><th>Contact</th><td><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></td></tr>
-      <tr><th>Publication director</th><td>Sindal</td></tr>
+      <tr><th>Publisher of the site and software</th><td>{{publisher}}</td></tr>
+      <tr><th>Contact</th><td><a href="mailto:{{email}}">{{email}}</a></td></tr>
+      <tr><th>Publication director</th><td>{{publisher}}</td></tr>
     </table>
     <p style="margin-top:16px">
       Sindal is distributed free of charge. No sale is made through this site: there is no payment, no
@@ -129,8 +90,8 @@ details pre {
   <div class="wrap-narrow" data-stagger>
     <h2 data-reveal>2. Site host</h2>
     <table class="id" data-reveal>
-      <tr><th>Host</th><td>GitHub, Inc. (GitHub Pages)</td></tr>
-      <tr><th>Address</th><td>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States</td></tr>
+      <tr><th>Host</th><td>{{hostName}}</td></tr>
+      <tr><th>Address</th><td>{{hostAddress}}</td></tr>
       <tr><th>Website</th><td><a href="https://github.com" rel="noopener">github.com</a></td></tr>
     </table>
     <p style="margin-top:16px">Installation files are distributed from GitHub's infrastructure as well.</p>
@@ -157,7 +118,7 @@ details pre {
     <p>
       This site is entirely static: <strong>no cookies</strong>, no trackers, no analytics, no forms. Like
       any web server, the host may log connection data including the IP address, for technical and security
-      purposes. That processing is GitHub, Inc.'s as host.
+      purposes. That processing is {{hostShort}}'s as host.
     </p>
     <p>
       The audio players on the home page read files hosted on this same site: no resource, font or script is
@@ -165,7 +126,7 @@ details pre {
     </p>
     <p>
       For any question about your data, write to
-      <a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a>.
+      <a href="mailto:{{email}}">{{email}}</a>.
     </p>
   </div>
 </section>
@@ -264,41 +225,7 @@ details pre {
         <tr><th>Component</th><th>Role</th><th>Licence</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><a href="https://github.com/melanchall/drywetmidi" rel="noopener">DryWetMidi</a> 7.2.0</td>
-          <td>MIDI reading and writing, music theory</td>
-          <td>MIT — © Maxim Dobroselsky</td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/naudio/NAudio" rel="noopener">NAudio</a> 2.2.1</td>
-          <td>Audio output and MIDI devices</td>
-          <td>MIT — © Mark Heath &amp; contributeurs</td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/sinshu/meltysynth" rel="noopener">MeltySynth</a> 2.1.0</td>
-          <td>SoundFont synthesis (.sf2)</td>
-          <td>MIT — © Nobuaki Tanaka</td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/velopack/velopack" rel="noopener">Velopack</a></td>
-          <td>Installer and updates</td>
-          <td>MIT — © Caelan Sayler et contributeurs</td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/google/material-design-icons" rel="noopener">Material Icons</a></td>
-          <td>Embedded icon font</td>
-          <td>Apache 2.0 — © Google</td>
-        </tr>
-        <tr>
-          <td><a href="https://www.schristiancollins.com" rel="noopener">GeneralUser GS</a> 2.0.3</td>
-          <td>Bundled General MIDI sound bank</td>
-          <td>GeneralUser GS License v2.0 — © S. Christian Collins</td>
-        </tr>
-        <tr>
-          <td><a href="https://avaloniaui.net" rel="noopener">Avalonia</a> 11.2</td>
-          <td>User interface and rendering</td>
-          <td>MIT — © AvaloniaUI OÜ</td>
-        </tr>
+{{thirdPartyRowsEn}}
       </tbody>
     </table>
 
@@ -396,46 +323,4 @@ Thank you!
   </div>
 </section>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <h4>Sindal</h4>
-        <p style="margin:0">Algorithmic music generator for Windows and macOS.</p>
-      </div>
-      <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="download.html">Download</a></li>
-          <li><a href="legal.html">Legal notice</a></li>
-          <li><a href="legal.html#third-party">Third-party licences</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Publisher</h4>
-        <ul>
-          <li>Sindal</li>
-          <li><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Third-party components</h4>
-        <ul>
-          <li>DryWetMidi, NAudio, MeltySynth, Velopack, Avalonia — MIT</li>
-          <li>Material Icons — Apache 2.0</li>
-          <li>GeneralUser GS — GeneralUser GS License v2.0</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bottom">
-      Pieces produced with Sindal belong to their author. The tracks on this page were composed with
-      the application.
-    </div>
-  </div>
-</footer>
-
-<script src="../motion.js"></script>
-
-</body>
-</html>
+{{> footer}}

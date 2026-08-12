@@ -5,20 +5,50 @@ Le code source de l'application vit dans un dépôt **privé** séparé ; seuls 
 binaires publiés et cette vitrine sont publics.
 
 ```
-.
-├── index.html         accueil : arguments, morceaux, démo, banques de sons
-├── telecharger.html   dernière version + sélecteur de toutes les versions
-├── legal.html         mentions légales, CLUF, licences tierces
-├── en/                version anglaise : index.html, download.html, legal.html
-├── style.css          jetons recopiés de Theme/Tokens.axaml (design system de l'app)
-├── releases.js        accès à l'API GitHub — contient la SEULE constante de dépôt
-├── motion.js          apparitions au défilement, en-tête, section lue, lecteur actif
-├── .nojekyll          désactive le traitement Jekyll de GitHub Pages
-├── img/
-│   ├── logo.png       512×512, produit par `tools/IconGen -png` côté dépôt privé
-│   └── app-creer.png  capture de l'onglet Création
-└── audio/             6 morceaux composés avec Sindal
+src/                   SOURCE — c'est ici qu'on édite
+├── data.json          éditeur, e-mail, hébergeur, dépôt, composants tiers, méta des pages
+├── partials/          en-tête et pied de page, un par langue (au lieu de 6 copies)
+└── pages/fr|en/       contenu propre à chaque page
+
+build.mjs              `node build.mjs` → écrit les 6 pages ci-dessous
+
+index.html             ┐
+telecharger.html       │
+legal.html             ├─ GÉNÉRÉS — ne pas éditer
+en/index.html          │
+en/download.html       │
+en/legal.html          ┘
+
+style.css              jetons recopiés de Theme/Tokens.axaml (design system de l'app)
+releases.js            accès à l'API GitHub — seule constante de dépôt côté JavaScript
+motion.js              apparitions au défilement, en-tête, section lue, lecteur actif
+.nojekyll              désactive le traitement Jekyll de GitHub Pages
+img/                   logo.png (produit par `tools/IconGen -png`), app-creer.png
+audio/                 6 morceaux composés avec Sindal
 ```
+
+## Modifier le site
+
+1. Éditer dans `src/` — jamais les fichiers HTML de la racine.
+2. `node build.mjs`
+3. Committer **les sources ET les pages générées** : le déploiement reste un
+   glisser-déposer, personne n'a à installer d'outil pour publier.
+
+Aucune dépendance : Node seul, pas de `npm install`. Le moteur de gabarit tient
+en trente lignes dans `build.mjs` ; une chaîne d'outils coûterait plus cher à
+maintenir, pour six pages, que ce qu'elle remplacerait.
+
+**Ce qui est centralisé** dans `src/data.json` : nom de l'éditeur, e-mail,
+hébergeur (nom, adresse, pays), URL de base, dépôt, accroche, et la liste des
+composants tiers (nom, version, URL, rôle FR et EN, licence, titulaire) — d'où
+sont dérivés le tableau des mentions légales ET le résumé du pied de page.
+L'e-mail apparaissait 20 fois sur 6 pages ; il n'existe plus qu'à un endroit.
+
+`build.mjs` **échoue** si un jeton `{{…}}` reste non résolu, plutôt que de le
+laisser s'afficher au visiteur.
+
+⚠ **Ne PAS tokeniser les textes de licence** reproduits dans les mentions
+légales : ce sont des citations, elles doivent rester au mot près.
 
 ⚠ **`.nojekyll` est un fichier caché.** Un glisser-déposer depuis l'explorateur
 Windows le laisse derrière — c'est déjà arrivé une fois. Sans lui, GitHub passe

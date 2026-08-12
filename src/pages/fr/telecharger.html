@@ -1,21 +1,3 @@
-<!--
-  ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/fr/telecharger.html · fragments : src/partials/ · données : src/data.json
-  Régénérer : node build.mjs
--->
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Télécharger Sindal</title>
-<meta name="description" content="Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication.">
-<link rel="icon" href="img/logo.png" sizes="any">
-<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/telecharger.html">
-<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/download.html">
-<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/telecharger.html">
-<link rel="stylesheet" href="style.css">
-
 <style>
 /* ── Propre à la page de téléchargement ──────────────────────────── */
 .dl-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 34px; }
@@ -68,27 +50,7 @@ table.req th, table.req td { text-align: left; padding: 11px 12px; border-bottom
 table.req th { color: var(--text-secondary); font-weight: 600; width: 34%; }
 table.req td { color: var(--text-secondary); }
 </style>
-</head>
-
-<body>
-
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><img src="img/logo.png" alt=""><span class="name">SINDAL</span></a>
-    <nav>
-      <a href="index.html#pourquoi">Pourquoi</a>
-      <a href="index.html#ecouter">Écouter</a>
-      <a href="index.html#demo">Démo</a>
-      <a href="index.html#sons">Sons</a>
-      <a href="telecharger.html" aria-current="page">Télécharger</a>
-    </nav>
-    <select class="lang" aria-label="Langue / Language">
-      <option value="" selected>FR</option>
-      <option value="en/download.html">EN</option>
-    </select>
-  </div>
-</header>
-
+{{> header}}
 
 <div class="page-head">
   <div class="wrap" data-stagger>
@@ -174,47 +136,9 @@ table.req td { color: var(--text-secondary); }
   </div>
 </section>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <h4>Sindal</h4>
-        <p style="margin:0">Générateur de musique algorithmique pour Windows et macOS.</p>
-      </div>
-      <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="telecharger.html">Télécharger</a></li>
-          <li><a href="legal.html">Mentions légales</a></li>
-          <li><a href="legal.html#tiers">Licences tierces</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Éditeur</h4>
-        <ul>
-          <li>Sindal</li>
-          <li><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Composants tiers</h4>
-        <ul>
-          <li>DryWetMidi, NAudio, MeltySynth, Velopack, Avalonia — MIT</li>
-          <li>Material Icons — Apache 2.0</li>
-          <li>GeneralUser GS — GeneralUser GS License v2.0</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bottom">
-      Les pièces produites par Sindal appartiennent à leur auteur. Les morceaux de cette page ont été
-      composés avec l'application.
-    </div>
-  </div>
-</footer>
+{{> footer}}
 
-
-<script src="releases.js"></script>
+<script src="{{rel}}releases.js"></script>
 <script>
 (function () {
   var select  = document.getElementById("version-select");
@@ -336,8 +260,3 @@ table.req td { color: var(--text-secondary); }
   });
 })();
 </script>
-
-<script src="motion.js"></script>
-
-</body>
-</html>

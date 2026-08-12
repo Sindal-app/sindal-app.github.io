@@ -1,24 +1,3 @@
-<!--
-  ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/en/index.html · fragments : src/partials/ · données : src/data.json
-  Régénérer : node build.mjs
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sindal — Algorithmic music generator</title>
-<meta name="description" content="Sindal composes original music on your own machine: 9 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Offline, no account.">
-<meta property="og:title" content="Sindal — Algorithmic music generator">
-<meta property="og:description" content="An original piece in one click. Then yours, bar by bar.">
-<meta property="og:type" content="website">
-<link rel="icon" href="../img/logo.png" sizes="any">
-<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/index.html">
-<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/index.html">
-<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/index.html">
-<link rel="stylesheet" href="../style.css">
-
 <style>
 /* ── Home page only ──────────────────────────────────────────────── */
 
@@ -79,27 +58,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 .dl-inline { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
 @media (max-width: 640px) { .hero { padding: 52px 0 44px; } }
 </style>
-</head>
-
-<body>
-
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><img src="../img/logo.png" alt=""><span class="name">SINDAL</span></a>
-    <nav>
-      <a href="#why">Why</a>
-      <a href="#listen">Listen</a>
-      <a href="#demo">Demo</a>
-      <a href="#sound">Sound</a>
-      <a href="download.html">Download</a>
-    </nav>
-    <select class="lang" aria-label="Langue / Language">
-      <option value="../index.html">FR</option>
-      <option value="" selected>EN</option>
-    </select>
-  </div>
-</header>
-
+{{> header}}
 
 <!-- ══ HERO ══ -->
 <div class="hero">
@@ -186,32 +145,32 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
     <div class="grid grid-2" data-stagger>
       <article class="track" data-reveal>
         <h3>L'aventure commence<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/l-aventure-commence.mp3"></audio>
+        <audio controls preload="none" src="{{rel}}audio/l-aventure-commence.mp3"></audio>
       </article>
 
       <article class="track" data-reveal>
         <h3>Symphonie<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/symphonie.m4a"></audio>
+        <audio controls preload="none" src="{{rel}}audio/symphonie.m4a"></audio>
       </article>
 
       <article class="track" data-reveal>
         <h3>Ciel étoilé<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/ciel-etoile.mp3"></audio>
+        <audio controls preload="none" src="{{rel}}audio/ciel-etoile.mp3"></audio>
       </article>
 
       <article class="track" data-reveal>
         <h3>Pyramide<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/pyramide.mp3"></audio>
+        <audio controls preload="none" src="{{rel}}audio/pyramide.mp3"></audio>
       </article>
 
       <article class="track" data-reveal>
         <h3>Liberté<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/liberte.mp3"></audio>
+        <audio controls preload="none" src="{{rel}}audio/liberte.mp3"></audio>
       </article>
 
       <article class="track" data-reveal>
         <h3>Grandir<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/grandir.mp3"></audio>
+        <audio controls preload="none" src="{{rel}}audio/grandir.mp3"></audio>
       </article>
     </div>
   </div>
@@ -224,7 +183,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
     <h2 data-reveal>Four moves, from settings to file</h2>
 
     <figure class="shot" data-reveal>
-      <img src="../img/app-creer.png" alt="Sindal's Create tab: mood, key, instrument, tempo, bars, refrain, and the rhythm sliders." loading="lazy">
+      <img src="{{rel}}img/app-creer.png" alt="Sindal's Create tab: mood, key, instrument, tempo, bars, refrain, and the rhythm sliders." loading="lazy">
       <figcaption>The Create tab. Every slider carries a relative weight, and shows the share it actually takes in the draw.</figcaption>
     </figure>
 
@@ -320,47 +279,9 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 </section>
 
 <!-- ══ FOOTER ══ -->
-<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <h4>Sindal</h4>
-        <p style="margin:0">Algorithmic music generator for Windows and macOS.</p>
-      </div>
-      <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="download.html">Download</a></li>
-          <li><a href="legal.html">Legal notice</a></li>
-          <li><a href="legal.html#third-party">Third-party licences</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Publisher</h4>
-        <ul>
-          <li>Sindal</li>
-          <li><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Third-party components</h4>
-        <ul>
-          <li>DryWetMidi, NAudio, MeltySynth, Velopack, Avalonia — MIT</li>
-          <li>Material Icons — Apache 2.0</li>
-          <li>GeneralUser GS — GeneralUser GS License v2.0</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bottom">
-      Pieces produced with Sindal belong to their author. The tracks on this page were composed with
-      the application.
-    </div>
-  </div>
-</footer>
+{{> footer}}
 
-
-<script src="../releases.js"></script>
+<script src="{{rel}}releases.js"></script>
 <script>
 /* Download buttons in the section above, filled from the API. Until the
    response arrives they point at download.html, which never breaks. */
@@ -392,8 +313,3 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
   }).catch(function () { /* links to download.html kept */ });
 })();
 </script>
-
-<script src="../motion.js"></script>
-
-</body>
-</html>

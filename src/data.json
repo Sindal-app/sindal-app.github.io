@@ -1,0 +1,150 @@
+{
+  "_comment": "Source UNIQUE des informations répétées sur le site. Toute valeur écrite ici ne doit apparaître nulle part ailleurs en dur. Après modification : node build.mjs",
+  "publisher": "Sindal",
+  "email": "yannick045@hotmail.fr",
+  "baseUrl": "https://sindal-app.github.io/",
+  "repo": "sindal-app/sindal-app.github.io",
+  "host": {
+    "name": "GitHub, Inc. (GitHub Pages)",
+    "address": "88 Colin P. Kelly Jr. Street, San Francisco, CA 94107",
+    "countryFr": "États-Unis",
+    "countryEn": "United States",
+    "url": "https://github.com",
+    "shortName": "GitHub, Inc."
+  },
+  "taglineFr": "Générateur de musique algorithmique pour Windows et macOS.",
+  "taglineEn": "Algorithmic music generator for Windows and macOS.",
+  "thirdParty": [
+    {
+      "name": "DryWetMidi",
+      "version": "7.2.0",
+      "url": "https://github.com/melanchall/drywetmidi",
+      "roleFr": "Lecture et écriture MIDI, théorie musicale",
+      "roleEn": "MIDI reading and writing, music theory",
+      "licence": "MIT",
+      "holder": "Maxim Dobroselsky"
+    },
+    {
+      "name": "NAudio",
+      "version": "2.2.1",
+      "url": "https://github.com/naudio/NAudio",
+      "roleFr": "Sortie audio et périphériques MIDI",
+      "roleEn": "Audio output and MIDI devices",
+      "licence": "MIT",
+      "holder": "Mark Heath &amp; contributeurs"
+    },
+    {
+      "name": "MeltySynth",
+      "version": "2.1.0",
+      "url": "https://github.com/sinshu/meltysynth",
+      "roleFr": "Synthèse SoundFont (.sf2)",
+      "roleEn": "SoundFont synthesis (.sf2)",
+      "licence": "MIT",
+      "holder": "Nobuaki Tanaka"
+    },
+    {
+      "name": "Velopack",
+      "version": "",
+      "url": "https://github.com/velopack/velopack",
+      "roleFr": "Installateur et mise à jour",
+      "roleEn": "Installer and updates",
+      "licence": "MIT",
+      "holder": "Caelan Sayler et contributeurs"
+    },
+    {
+      "name": "Material Icons",
+      "version": "",
+      "url": "https://github.com/google/material-design-icons",
+      "roleFr": "Police d'icônes embarquée",
+      "roleEn": "Embedded icon font",
+      "licence": "Apache 2.0",
+      "holder": "Google"
+    },
+    {
+      "name": "GeneralUser GS",
+      "version": "2.0.3",
+      "url": "https://www.schristiancollins.com",
+      "roleFr": "Banque de sons General MIDI livrée",
+      "roleEn": "Bundled General MIDI sound bank",
+      "licence": "GeneralUser GS License v2.0",
+      "holder": "S. Christian Collins"
+    },
+    {
+      "name": "Avalonia",
+      "version": "11.2",
+      "url": "https://avaloniaui.net",
+      "roleFr": "Interface graphique et rendu",
+      "roleEn": "User interface and rendering",
+      "licence": "MIT",
+      "holder": "AvaloniaUI OÜ"
+    }
+  ],
+  "pages": [
+    {
+      "src": "fr/index.html",
+      "out": "index.html",
+      "lang": "fr",
+      "alt": "en/index.html",
+      "rel": "",
+      "current": "",
+      "title": "Sindal — Générateur de musique algorithmique",
+      "description": "Sindal compose de la musique originale sur votre machine : 9 thèmes, retouche mesure par mesure, export MIDI, WAV et MusicXML. Hors ligne, sans compte.",
+      "ogTitle": "Sindal — Générateur de musique algorithmique",
+      "ogDescription": "Une pièce originale en un clic. Puis la vôtre, mesure par mesure."
+    },
+    {
+      "src": "fr/telecharger.html",
+      "out": "telecharger.html",
+      "lang": "fr",
+      "alt": "en/download.html",
+      "rel": "",
+      "current": "download",
+      "title": "Télécharger Sindal",
+      "description": "Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication."
+    },
+    {
+      "src": "fr/legal.html",
+      "out": "legal.html",
+      "lang": "fr",
+      "alt": "en/legal.html",
+      "rel": "",
+      "current": "",
+      "robots": "index, follow",
+      "title": "Mentions légales — Sindal",
+      "description": "Mentions légales de Sindal : éditeur, hébergeur, données personnelles, contrat de licence utilisateur final et licences des composants tiers."
+    },
+    {
+      "src": "en/index.html",
+      "out": "en/index.html",
+      "lang": "en",
+      "alt": "index.html",
+      "rel": "../",
+      "current": "",
+      "title": "Sindal — Algorithmic music generator",
+      "description": "Sindal composes original music on your own machine: 9 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Offline, no account.",
+      "ogTitle": "Sindal — Algorithmic music generator",
+      "ogDescription": "An original piece in one click. Then yours, bar by bar."
+    },
+    {
+      "src": "en/download.html",
+      "out": "en/download.html",
+      "lang": "en",
+      "alt": "telecharger.html",
+      "rel": "../",
+      "current": "download",
+      "title": "Download Sindal",
+      "description": "Download Sindal for Windows or macOS. Every published version, with its release notes."
+    },
+    {
+      "src": "en/legal.html",
+      "out": "en/legal.html",
+      "lang": "en",
+      "alt": "legal.html",
+      "rel": "../",
+      "current": "",
+      "robots": "index, follow",
+      "title": "Legal notice — Sindal",
+      "description": "Sindal legal notice: publisher, hosting, personal data, end user licence agreement and third-party licences."
+    }
+  ]
+}
