@@ -30,8 +30,14 @@ var SindalReleases = (function () {
     return (rel.assets || []).filter(function (a) { return /\.pkg$/i.test(a.name); })[0];
   }
 
+  /* Langue lue sur la page elle-même (`<html lang>`) : un seul exemplaire de
+     ce fichier sert les pages FR et EN, et aucun appelant n'a à penser à
+     passer un paramètre de langue. */
+  var EN = (document.documentElement.lang || "fr").toLowerCase().indexOf("en") === 0;
+
   function size(bytes) {
-    return (bytes / 1048576).toFixed(1).replace(".", ",") + " Mo";
+    var n = (bytes / 1048576).toFixed(1);
+    return EN ? n + " MB" : n.replace(".", ",") + " Mo";
   }
 
   function version(rel) {
@@ -40,7 +46,7 @@ var SindalReleases = (function () {
 
   function date(rel) {
     return rel.published_at
-      ? new Date(rel.published_at).toLocaleDateString("fr-FR",
+      ? new Date(rel.published_at).toLocaleDateString(EN ? "en-GB" : "fr-FR",
           { day: "numeric", month: "long", year: "numeric" })
       : null;
   }

@@ -53,11 +53,24 @@
   /* Rayons */
   --r-sm: 4px; --r-md: 6px; --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px;
 
-  /* Mouvement : trois durées seulement */
+  /* Mouvement : les trois durées de l'application, pour les RÉACTIONS
+     (survol, pression, changement d'état). Elles sont calibrées pour une
+     interface qu'on manipule, où toute lenteur se paie. */
   --dur-quick: .08s;
   --dur-base:  .16s;
   --dur-slow:  .28s;
   --ease-out:  cubic-bezier(.215, .61, .355, 1);
+
+  /* Registre ABSENT de l'application, ajouté ici : l'ENTRÉE d'un élément à
+     l'écran. Une page qu'on parcourt n'a pas les contraintes d'un panneau
+     qu'on manipule — à .28 s une apparition ne se lit pas, elle sursaute.
+     Deux durées, une courbe exponentielle qui freine franchement en fin de
+     course (ni rebond ni élastique : ce serait du bruit sur une vitrine
+     d'outil). */
+  --dur-enter:  .52s;
+  --dur-enter-l: .72s;
+  --ease-quart: cubic-bezier(.165, .84, .44, 1);
+  --ease-expo:  cubic-bezier(.19, 1, .22, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -204,3 +217,190 @@ footer.site .bottom { margin-top: 34px; padding-top: 20px; border-top: 1px solid
   .wrap, .wrap-narrow { width: calc(100% - 32px); }
   section { padding: 56px 0; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   MOUVEMENT
+   ══════════════════════════════════════════════════════════════════
+
+   Trois règles tenues partout dans ce bloc :
+
+   1. On n'anime QUE `transform` et `opacity`. Jamais une propriété de
+      mise en page (height, top, margin…) : le navigateur recalcule
+      alors la page à chaque image, et l'animation saccade dès qu'il y a
+      autre chose à faire. L'application, elle, anime `Height` sur son
+      égaliseur — Avalonia n'a pas la même contrainte, on ne recopie donc
+      pas la technique, seulement l'intention.
+   2. Le mouvement sert à SITUER, jamais à décorer : d'où l'élément
+      arrive dit d'où il vient. Rien ne bouge sans raison.
+   3. Rien ne dépend du JavaScript pour être LISIBLE. Les états masqués
+      ci-dessous sont conditionnés à `html.js`, posé par motion.js dès son
+      exécution : script en échec ou bloqué, la page s'affiche entière et
+      immobile plutôt que blanche.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Apparition au défilement ────────────────────────────────────── */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition: opacity var(--dur-enter) var(--ease-quart),
+              transform var(--dur-enter) var(--ease-quart);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* La capture entre de plus loin et sur une durée plus longue : c'est le
+   plus gros objet de la page, il lui faut plus de course pour ne pas
+   paraître surgir. */
+.js figure.shot[data-reveal] { transform: translate3d(0, 26px, 0) scale(.985); }
+.js figure.shot[data-reveal] {
+  transition: opacity var(--dur-enter-l) var(--ease-expo),
+              transform var(--dur-enter-l) var(--ease-expo);
+}
+
+/* ── Entrée du héros ─────────────────────────────────────────────── */
+/* Au chargement, pas au défilement : c'est la première chose vue, elle ne
+   peut pas attendre un geste. Cascade courte — au-delà de cinq crans, on
+   attend au lieu de lire. */
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+.js .hero-anim > * {
+  animation: rise var(--dur-enter-l) var(--ease-expo) both;
+  animation-delay: calc(60ms + var(--i, 0) * 90ms);
+}
+
+/* ── En-tête au défilement ───────────────────────────────────────── */
+/* Le fond se densifie et la bordure s'affirme dès qu'on quitte le haut :
+   l'en-tête cesse d'être posé sur le héros pour devenir une barre. */
+header.site {
+  transition: background var(--dur-slow) var(--ease-out),
+              border-color var(--dur-slow) var(--ease-out);
+}
+header.site.is-scrolled {
+  background: color-mix(in srgb, var(--canvas) 96%, transparent);
+  border-bottom-color: var(--border-strong);
+}
+
+/* Marque : la pastille pivote très légèrement au survol du lien. Le logo
+   est un disque, la rotation est donc la seule transformation qui ne
+   déforme rien. */
+.nav .brand img {
+  transition: transform var(--dur-slow) var(--ease-quart);
+}
+.nav .brand:hover img { transform: rotate(-8deg) scale(1.06); }
+
+/* Lien de navigation : soulignement qui se déploie depuis la gauche.
+   `scaleX` sur un pseudo-élément — une largeur animée relaierait la mise
+   en page à chaque image. */
+.nav nav a { position: relative; }
+.nav nav a::after {
+  content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px;
+  height: 1.5px; border-radius: 1px; background: var(--accent-soft);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-quart);
+}
+.nav nav a:hover::after,
+.nav nav a[aria-current="page"]::after,
+.nav nav a.is-active::after { transform: scaleX(1); }
+.nav nav a.is-active { color: var(--text-primary); }
+
+/* ── Cartes ──────────────────────────────────────────────────────── */
+.card {
+  transition: transform var(--dur-base) var(--ease-quart),
+              border-color var(--dur-base) var(--ease-out),
+              background var(--dur-base) var(--ease-out);
+}
+.card:hover { transform: translate3d(0, -3px, 0); }
+.card .ico { transition: transform var(--dur-slow) var(--ease-quart); }
+.card:hover .ico { transform: scale(1.1) rotate(-6deg); }
+
+/* Pastille numérotée d'une étape : même geste, plus discret. */
+.step::before { transition: transform var(--dur-slow) var(--ease-quart); }
+.step:hover::before { transform: scale(1.08); }
+
+/* ── Boutons ─────────────────────────────────────────────────────── */
+/* `translate3d` plutôt que `translateY` : la couche est promue une fois
+   pour toutes, le texte ne tremble pas au retour. */
+.btn:hover { transform: translate3d(0, -1px, 0); }
+.btn:active { transform: translate3d(0, 0, 0) scale(.985); }
+
+/* Focus clavier visible partout — sans lui, tout ce qui précède n'existe
+   qu'à la souris. */
+.btn:focus-visible,
+.nav nav a:focus-visible,
+.assets a:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* ── Morceau en cours de lecture ─────────────────────────────────── */
+/* Reprend l'idée de l'égaliseur de l'application : la ligne qui joue se
+   signale d'elle-même. Ici en `scaleY` (transform), là-bas en `Height`. */
+.track { transition: border-color var(--dur-base) var(--ease-out),
+                     transform var(--dur-base) var(--ease-quart); }
+.track:hover { transform: translate3d(0, -2px, 0); }
+.track.is-playing { border-color: var(--accent); }
+
+.track h3 { display: flex; align-items: center; gap: 10px; }
+
+.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 13px; opacity: 0; }
+.track.is-playing .eq { opacity: 1; }
+.eq i {
+  width: 2.5px; height: 100%; border-radius: 1px;
+  background: var(--accent-soft);
+  transform: scaleY(.25); transform-origin: bottom;
+}
+.track.is-playing .eq i { animation: eqbar .9s var(--ease-out) infinite alternate; }
+.eq i:nth-child(2) { animation-delay: .15s; }
+.eq i:nth-child(3) { animation-delay: .3s; }
+.eq i:nth-child(4) { animation-delay: .45s; }
+@keyframes eqbar {
+  from { transform: scaleY(.25); }
+  to   { transform: scaleY(1); }
+}
+
+/* ── Lignes de fichiers (page Télécharger) ───────────────────────── */
+.assets li {
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-quart);
+  animation: rise var(--dur-enter) var(--ease-quart) both;
+}
+.assets li:hover { border-color: var(--border-strong); transform: translate3d(2px, 0, 0); }
+
+/* Repli complet : plus aucune mise en scène, tout est immédiatement
+   visible et immobile. Le bloc générique plus haut neutralise déjà les
+   durées ; celui-ci annule en plus les états de DÉPART, sans quoi un
+   élément resterait décalé ou transparent. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js figure.shot[data-reveal] { opacity: 1; transform: none; }
+  .js .hero-anim > *,
+  .assets li { animation: none; }
+  .track.is-playing .eq i { animation: none; transform: scaleY(.7); }
+}
+
+/* Cascade du héros. Les crans sont posés ici plutôt qu'en style inline
+   dans le HTML : c'est du rythme, donc de la présentation. Cinq enfants,
+   pas plus — au-delà on attend au lieu de lire. */
+.js .hero-anim > *:nth-child(1) { --i: 0; }
+.js .hero-anim > *:nth-child(2) { --i: 1; }
+.js .hero-anim > *:nth-child(3) { --i: 2; }
+.js .hero-anim > *:nth-child(4) { --i: 3; }
+.js .hero-anim > *:nth-child(5) { --i: 4; }
+
+/* ── Sélecteur de langue ─────────────────────────────────────────── */
+/* Dans l'en-tête, à droite de la navigation. Registre SECONDAIRE : on
+   CHOISIT une langue, on ne déclenche pas une action (Tokens § SECONDAIRE). */
+.lang {
+  font: inherit; font-size: .8rem; font-weight: 600;
+  color: var(--text-secondary); background: var(--raised);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  padding: 6px 8px; margin-left: 6px; cursor: pointer;
+  transition: border-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+.lang:hover { color: var(--text-primary); border-color: var(--secondary); }
+.lang:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }

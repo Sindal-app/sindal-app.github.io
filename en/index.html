@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sindal — Algorithmic music generator</title>
+<meta name="description" content="Sindal composes original music on your own machine: 9 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Offline, no account.">
+<meta property="og:title" content="Sindal — Algorithmic music generator">
+<meta property="og:description" content="An original piece in one click. Then yours, bar by bar.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../img/logo.png" sizes="any">
+<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/index.html">
+<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/index.html">
+<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/index.html">
+<link rel="stylesheet" href="../style.css">
+
+<style>
+/* ── Home page only ──────────────────────────────────────────────── */
+
+/* Hero glow painted as a section background rather than an offset
+   pseudo-element: clipped by `overflow`, it left a hard rectangular seam
+   in the top-left corner. As a background it fades out inside its box. */
+.hero {
+  padding: 76px 0 64px;
+  background:
+    radial-gradient(58% 78% at 22% 30%, var(--accent-night) 0%, transparent 68%),
+    radial-gradient(46% 62% at 88% 8%, var(--secondary-surface) 0%, transparent 62%);
+}
+.hero h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); letter-spacing: -.02em; }
+.hero h1 .grad {
+  background: linear-gradient(120deg, var(--accent-soft), var(--secondary-soft));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p.lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary);
+  max-width: 60ch; margin: 20px 0 0;
+}
+.hero .cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+.hero .reassure {
+  margin-top: 20px; color: var(--text-muted); font-size: .875rem;
+  display: flex; gap: 8px 22px; flex-wrap: wrap;
+}
+.hero .reassure span::before { content: "✓ "; color: var(--success); }
+
+/* Numbered steps */
+.steps { counter-reset: step; margin-top: 34px; }
+.step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border-subtle); }
+.step:last-child { border-bottom: 0; }
+.step::before {
+  counter-increment: step; content: counter(step);
+  flex: 0 0 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent-surface); border: 1px solid var(--accent);
+  color: var(--text-accent); font-family: var(--font-metric); font-size: .9rem; font-weight: 700;
+}
+.step h3 { font-size: 1rem; margin-bottom: 4px; }
+.step p { margin: 0; color: var(--text-secondary); font-size: .925rem; }
+
+/* Screenshot */
+figure.shot { margin: 40px 0 0; }
+figure.shot img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border-strong); border-radius: var(--r-xl);
+  background: var(--canvas-deep);
+}
+figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top: 12px; text-align: center; }
+
+/* Audio players: title and player, nothing else */
+.track { background: var(--card); border: 1px solid var(--border-subtle); border-radius: var(--r-xl); padding: 18px 20px; }
+.track h3 { font-size: 1rem; margin-bottom: 14px; }
+.track audio { width: 100%; height: 40px; }
+
+/* Download block on the home page */
+.dl-inline { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+@media (max-width: 640px) { .hero { padding: 52px 0 44px; } }
+</style>
+</head>
+
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="../img/logo.png" alt=""><span class="name">SINDAL</span></a>
+    <nav>
+      <a href="#why">Why</a>
+      <a href="#listen">Listen</a>
+      <a href="#demo">Demo</a>
+      <a href="#sound">Sound</a>
+      <a href="download.html">Download</a>
+    </nav>
+    <select class="lang" aria-label="Langue / Language">
+      <option value="../index.html">FR</option>
+      <option value="" selected>EN</option>
+    </select>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="wrap hero-anim">
+    <p class="eyebrow">Algorithmic music generator</p>
+    <h1>An original piece in one click.<br><span class="grad">Then yours, bar by bar.</span></h1>
+    <p class="lead">
+      Sindal composes on your own machine. Pick a mood, a key, a tempo, then listen, rework whatever
+      falls flat, and export to MIDI, WAV or MusicXML. The music it produces belongs to you.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="download.html">
+        Download <span class="sub" id="hero-version"></span>
+      </a>
+      <a class="btn btn-secondary" href="#listen">Hear some examples</a>
+    </div>
+    <p class="reassure">
+      <span>Free</span><span>No account</span><span>Works offline</span><span>Nothing to install first</span>
+    </p>
+  </div>
+</div>
+
+<!-- ══ WHY ══ -->
+<section id="why">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Why Sindal</p>
+    <h2 data-reveal>A music theory engine, not a black box</h2>
+    <p class="intro" data-reveal>
+      Sindal has learned nothing from existing music. It applies the rules of written composition (scales,
+      degrees, voice leading, cadences) to the settings you choose. What comes out resembles no one else's
+      work, and raises no question about training data rights.
+    </p>
+
+    <div class="grid grid-3" data-stagger>
+      <article class="card" data-reveal>
+        <div class="ico">🎼</div>
+        <h3>The music is yours</h3>
+        <p>No subscription, no watermark, no clause about what you do with it. Files land on your own disk,
+           in open formats.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">🔒</div>
+        <h3>Nothing leaves your machine</h3>
+        <p>No account, no server, no telemetry. Sindal runs entirely offline, sound synthesis included.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">✍️</div>
+        <h3>You stay in control</h3>
+        <p>A bar you dislike? Generate three variations, hear them in context, graft in the one you prefer.
+           Or open the editor and move notes one by one.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">🎹</div>
+        <h3>Sound is included</h3>
+        <p>A complete General MIDI bank ships with the application: Sindal plays and exports audio from the
+           moment it is installed. <a href="#sound">More about sound</a>.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">📤</div>
+        <h3>Open formats</h3>
+        <p>MIDI for your sequencer, WAV for editing, MusicXML for MuseScore or Dorico, PNG for a printable
+           score.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">⚡</div>
+        <h3>Frictionless install</h3>
+        <p>No runtime to install beforehand, no administrator prompt. The application lands in your user
+           folder and updates itself.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LISTEN ══ -->
+<section id="listen">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Listen</p>
+    <h2 data-reveal>Six pieces made with Sindal</h2>
+    <p class="intro" data-reveal>
+      Generated by the application, then reworked inside it: bars regenerated, notes moved, structure
+      adjusted. This is what the tool allows, from first draft to the version worth keeping.
+    </p>
+
+    <div class="grid grid-2" data-stagger>
+      <article class="track" data-reveal>
+        <h3>L'aventure commence<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/l-aventure-commence.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Symphonie<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/symphonie.m4a"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Ciel étoilé<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/ciel-etoile.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Pyramide<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/pyramide.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Liberté<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/liberte.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Grandir<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/grandir.mp3"></audio>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEMO ══ -->
+<section id="demo">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>How it works</p>
+    <h2 data-reveal>Four moves, from settings to file</h2>
+
+    <figure class="shot" data-reveal>
+      <img src="../img/app-creer.png" alt="Sindal's Create tab: mood, key, instrument, tempo, bars, refrain, and the rhythm sliders." loading="lazy">
+      <figcaption>The Create tab. Every slider carries a relative weight, and shows the share it actually takes in the draw.</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step" data-reveal>
+        <div>
+          <h3>Set</h3>
+          <p>Nine moods (happy, sad, epic, celtic, oriental, neoclassical and more), twelve keys, the tempo,
+             the number of bars. Then, if you want to go further: chord density, harmonic colours, the rhythm
+             profile, rests, the dynamic arc, the register, the refrain.</p>
+        </div>
+      </div>
+      <div class="step" data-reveal>
+        <div>
+          <h3>Generate</h3>
+          <p>The engine writes a melody, a left hand and a bass line that agree with each other: chords are
+             diatonic by construction, the left hand never holds more than three notes, and the piece ends on
+             a real cadence with a ritardando.</p>
+        </div>
+      </div>
+      <div class="step" data-reveal>
+        <div>
+          <h3>Listen, then rework</h3>
+          <p>Select the bars that miss. Sindal offers three variations, playable in context, and grafts in the
+             one you pick. You can also insert or remove a bar, copy one bar onto another, or open the editor
+             and move notes individually.</p>
+        </div>
+      </div>
+      <div class="step" data-reveal>
+        <div>
+          <h3>Save</h3>
+          <p>MIDI, WAV, a PNG score, MusicXML, and a <code>.sindal</code> project that reopens the piece
+             exactly as you left it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOUND ══ -->
+<section id="sound">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Sound</p>
+    <h2 data-reveal>A sound bank included, and yours on top</h2>
+    <p class="intro" data-reveal>
+      A MIDI file holds no sound at all: it describes notes, and something has to play them. Sindal brings
+      its own instrument, so the application sounds from the moment it is installed. No configuration, no
+      external synthesiser, no connection.
+    </p>
+
+    <div class="grid grid-3" data-stagger>
+      <article class="card" data-reveal>
+        <div class="ico">🎛️</div>
+        <h3>GeneralUser GS included</h3>
+        <p>S. Christian Collins' General MIDI SoundFont (32 MB, 128 instruments) is installed alongside the
+           application, and is enough to play and export everything you compose. Its licence allows musical
+           use, commercial included.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">📚</div>
+        <h3>Your own banks</h3>
+        <p>Load any <code>.sf2</code> SoundFont or <code>.sfz</code> bank. A full sampled piano works, thanks
+           to lazy loading. The bank you choose is remembered and reloaded on the next launch.</p>
+      </article>
+      <article class="card" data-reveal>
+        <div class="ico">💾</div>
+        <h3>Real audio export</h3>
+        <p>Exported WAV is rendered by the active bank, not by a system synthesiser: what you hear in the
+           application is exactly what lands in the file.</p>
+      </article>
+    </div>
+
+    <p class="info-box" data-reveal>
+      An <code>.sfz</code> bank describes a single instrument, so the instrument selector greys out and the
+      application explains why. That is deliberate: the bank <em>is</em> the instrument.
+    </p>
+  </div>
+</section>
+
+<!-- ══ DOWNLOAD ══ -->
+<section id="download">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Download</p>
+    <h2 data-reveal>Install Sindal</h2>
+    <p class="intro" id="version-line" data-reveal>Windows 10/11 64-bit, or macOS on Apple Silicon. Free, no account.</p>
+
+    <div class="dl-inline">
+      <a class="btn btn-primary" id="dl-win" href="download.html">Download for Windows</a>
+      <a class="btn btn-secondary" id="dl-mac" href="download.html">Download for macOS</a>
+      <a class="btn btn-secondary" href="download.html">Pick a version…</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Sindal</h4>
+        <p style="margin:0">Algorithmic music generator for Windows and macOS.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="legal.html">Legal notice</a></li>
+          <li><a href="legal.html#third-party">Third-party licences</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Publisher</h4>
+        <ul>
+          <li>Sindal</li>
+          <li><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Third-party components</h4>
+        <ul>
+          <li>DryWetMidi, NAudio, MeltySynth, Velopack — MIT</li>
+          <li>Material Icons — Apache 2.0</li>
+          <li>GeneralUser GS — S. Christian Collins</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      Pieces produced with Sindal belong to their author. The tracks on this page were composed with the
+      application.
+    </div>
+  </div>
+</footer>
+
+<script src="../releases.js"></script>
+<script>
+/* Download buttons in the section above, filled from the API. Until the
+   response arrives they point at download.html, which never breaks. */
+(function () {
+  SindalReleases.fetchLatest().then(function (rel) {
+    var v = SindalReleases.version(rel);
+    var win = SindalReleases.windowsAsset(rel);
+    var mac = SindalReleases.macAsset(rel);
+
+    if (v) {
+      document.getElementById("hero-version").textContent = "v" + v;
+      var when = rel.published_at
+        ? new Date(rel.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+        : null;
+      document.getElementById("version-line").textContent =
+        "Version " + v + (when ? ", released on " + when : "") +
+        ". Windows 10/11 64-bit, or macOS on Apple Silicon.";
+    }
+    if (win) {
+      var a = document.getElementById("dl-win");
+      a.href = win.browser_download_url;
+      a.textContent = "Download for Windows (" + SindalReleases.size(win.size) + ")";
+    }
+    if (mac) {
+      var b = document.getElementById("dl-mac");
+      b.href = mac.browser_download_url;
+      b.textContent = "Download for macOS (" + SindalReleases.size(mac.size) + ")";
+    }
+  }).catch(function () { /* links to download.html kept */ });
+})();
+</script>
+
+<script src="../motion.js"></script>
+
+</body>
+</html>

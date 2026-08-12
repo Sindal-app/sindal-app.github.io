@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Télécharger Sindal</title>
-<meta name="description" content="Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication.">
-<link rel="icon" href="img/logo.png" sizes="any">
+<title>Download Sindal</title>
+<meta name="description" content="Download Sindal for Windows or macOS. Every published version, with its release notes.">
+<link rel="icon" href="../img/logo.png" sizes="any">
 <link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/telecharger.html">
 <link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/download.html">
 <link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/telecharger.html">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../style.css">
 
 <style>
-/* ── Propre à la page de téléchargement ──────────────────────────── */
+/* ── Download page only ──────────────────────────────────────────── */
 .dl-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 34px; }
 .dl {
   background: var(--card); border: 1px solid var(--border-subtle);
@@ -25,7 +25,7 @@
 .dl .btn { margin-top: auto; }
 .dl .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
 
-/* Sélecteur de version : registre SECONDAIRE (on CHOISIT), jamais violet */
+/* Version picker: SECONDARY register (you CHOOSE), never accent violet */
 .picker {
   background: var(--surface); border: 1px solid var(--border-subtle);
   border-radius: var(--r-xl); padding: 22px 20px; margin-top: 34px;
@@ -69,133 +69,140 @@ table.req td { color: var(--text-secondary); }
 
 <header class="site">
   <div class="wrap nav">
-    <a class="brand" href="index.html"><img src="img/logo.png" alt=""><span class="name">SINDAL</span></a>
+    <a class="brand" href="index.html"><img src="../img/logo.png" alt=""><span class="name">SINDAL</span></a>
     <nav>
-      <a href="index.html#pourquoi">Pourquoi</a>
-      <a href="index.html#ecouter">Écouter</a>
-      <a href="index.html#demo">Démo</a>
-      <a href="index.html#sons">Sons</a>
-      <a href="telecharger.html" aria-current="page">Télécharger</a>
+      <a href="index.html#why">Why</a>
+      <a href="index.html#listen">Listen</a>
+      <a href="index.html#demo">Demo</a>
+      <a href="index.html#sound">Sound</a>
+      <a href="download.html" aria-current="page">Download</a>
     </nav>
     <select class="lang" aria-label="Langue / Language">
-      <option value="" selected>FR</option>
-      <option value="en/download.html">EN</option>
+      <option value="../telecharger.html">FR</option>
+      <option value="" selected>EN</option>
     </select>
   </div>
 </header>
 
 <div class="page-head">
   <div class="wrap" data-stagger>
-    <p class="eyebrow" data-reveal>Télécharger</p>
-    <h1>Installez Sindal</h1>
-    <p class="intro" id="latest-line" data-reveal>Recherche de la dernière version…</p>
+    <p class="eyebrow" data-reveal>Download</p>
+    <h1>Install Sindal</h1>
+    <p class="intro" id="latest-line" data-reveal>Looking up the latest version…</p>
   </div>
 </div>
 
-<!-- ══ DERNIÈRE VERSION ══ -->
+<!-- ══ LATEST ══ -->
 <section style="border-top:0; padding-top:0">
   <div class="wrap" data-stagger>
     <div class="dl-grid">
       <div class="dl" data-reveal>
         <h3>Windows</h3>
-        <p class="meta" id="meta-win">Windows 10 ou 11 · 64 bits</p>
-        <a class="btn btn-primary" id="dl-win" href="#versions">Télécharger le programme d'installation</a>
+        <p class="meta" id="meta-win">Windows 10 or 11 · 64-bit</p>
+        <ul>
+          <li>Nothing to install first: the runtime travels with the application</li>
+          <li>No administrator prompt, it installs into your user folder</li>
+          <li>Automatic updates</li>
+        </ul>
+        <a class="btn btn-primary" id="dl-win" href="#versions">Download the installer</a>
       </div>
 
       <div class="dl" data-reveal>
         <h3>macOS</h3>
-        <p class="meta" id="meta-mac">macOS Apple Silicon (arm64)</p>
-        <a class="btn btn-secondary" id="dl-mac" href="#versions">Télécharger le paquet</a>
+        <p class="meta" id="meta-mac">macOS on Apple Silicon (arm64)</p>
+        <ul>
+          <li><code>.pkg</code> package, installs into <code>/Applications</code></li>
+          <li>Unsigned application: first launch by right-click → Open</li>
+          <li>No automatic updates on this platform</li>
+        </ul>
+        <a class="btn btn-secondary" id="dl-mac" href="#versions">Download the package</a>
       </div>
     </div>
 
     <p class="notice" data-reveal>
-      <strong>macOS.</strong> Le paquet n'est ni signé ni notarié. Au premier lancement, macOS refusera de
-      l'ouvrir par un double-clic : faites un clic droit sur l'application, puis « Ouvrir », et confirmez.
-      Les lancements suivants sont normaux.
+      <strong>macOS.</strong> The package is neither signed nor notarised. On first launch macOS will refuse
+      to open it from a double-click: right-click the application, choose Open, and confirm. Later launches
+      behave normally.
     </p>
   </div>
 </section>
 
-<!-- ══ CHOISIR UNE VERSION ══ -->
+<!-- ══ PICK A VERSION ══ -->
 <section id="versions">
   <div class="wrap" data-stagger>
-    <p class="eyebrow" data-reveal>Archives</p>
-    <h2 data-reveal>Choisir une version</h2>
+    <p class="eyebrow" data-reveal>Archive</p>
+    <h2 data-reveal>Pick a version</h2>
     <p class="intro" data-reveal>
-      Toutes les versions publiées restent disponibles. Utile pour revenir en arrière si une version vous
-      pose problème — ou pour installer une version précise sur un poste donné.
+      Every published version stays available. Useful to roll back if a release causes you trouble, or to
+      install a specific version on a given machine.
     </p>
 
     <div class="picker" data-reveal>
       <div class="row">
         <label for="version-select">Version</label>
         <select id="version-select" disabled>
-          <option>Chargement…</option>
+          <option>Loading…</option>
         </select>
         <span id="version-date" style="color:var(--text-muted); font-size:.85rem"></span>
       </div>
 
       <ul class="assets" id="asset-list"></ul>
       <div class="notes" id="release-notes" hidden></div>
-      <p class="state" id="picker-state">Interrogation de GitHub…</p>
+      <p class="state" id="picker-state">Asking GitHub…</p>
     </div>
 
     <p class="info-box" data-reveal>
-      Sur Windows, installer une version plus ancienne par-dessus une récente n'est pas prévu : désinstallez
-      d'abord Sindal depuis <em>Paramètres → Applications</em>. Vos morceaux enregistrés ne sont pas touchés,
-      ils vivent hors du dossier d'installation. En revanche la désinstallation emporte favoris, langue et
-      journaux, qui partagent le dossier de l'application.
+      On Windows, installing an older version over a newer one is not supported: uninstall Sindal first,
+      from <em>Settings → Apps</em>. Your saved pieces are untouched, they live outside the installation
+      folder. Uninstalling does remove favourites, language and logs, which share the application folder.
     </p>
   </div>
 </section>
 
-<!-- ══ CONFIGURATION ══ -->
-<section id="config">
+<!-- ══ REQUIREMENTS ══ -->
+<section id="requirements">
   <div class="wrap" data-stagger>
-    <p class="eyebrow" data-reveal>Configuration</p>
-    <h2 data-reveal>Ce qu'il vous faut</h2>
+    <p class="eyebrow" data-reveal>Requirements</p>
+    <h2 data-reveal>What you need</h2>
 
     <table class="req" data-reveal>
-      <tr><th>Windows</th><td>Windows 10 ou 11, 64 bits (x64). Aucun runtime .NET à installer : il est inclus dans le paquet.</td></tr>
-      <tr><th>macOS</th><td>Apple Silicon (arm64). Les Mac Intel ne sont pas couverts par le paquet publié.</td></tr>
-      <tr><th>Espace disque</th><td>Environ 250 Mo, dont 32 Mo pour la banque de sons incluse.</td></tr>
-      <tr><th>Connexion</th><td>Aucune. L'application fonctionne entièrement hors ligne ; seule la recherche
-          de mise à jour, sur Windows, contacte le réseau.</td></tr>
-      <tr><th>Carte son</th><td>N'importe laquelle. Aucun synthétiseur MIDI externe n'est nécessaire : la
-          synthèse est logicielle et embarquée.</td></tr>
+      <tr><th>Windows</th><td>Windows 10 or 11, 64-bit (x64). No .NET runtime to install: it ships inside the package.</td></tr>
+      <tr><th>macOS</th><td>Apple Silicon (arm64). Intel Macs are not covered by the published package.</td></tr>
+      <tr><th>Disk space</th><td>Around 250 MB, including 32 MB for the bundled sound bank.</td></tr>
+      <tr><th>Connection</th><td>None. The application runs entirely offline; only the update check, on Windows, reaches the network.</td></tr>
+      <tr><th>Sound card</th><td>Any. No external MIDI synthesiser is needed: synthesis is software and built in.</td></tr>
     </table>
   </div>
 </section>
 
 <footer class="site">
-  <div class="wrap" data-stagger>
+  <div class="wrap">
     <div class="cols">
       <div>
         <h4>Sindal</h4>
-        <p style="margin:0">Générateur de musique algorithmique pour Windows et macOS.</p>
+        <p style="margin:0">Algorithmic music generator for Windows and macOS.</p>
       </div>
       <div>
         <h4>Pages</h4>
         <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="legal.html">Mentions légales</a></li>
-          <li><a href="legal.html#tiers">Licences tierces</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="legal.html">Legal notice</a></li>
+          <li><a href="legal.html#third-party">Third-party licences</a></li>
         </ul>
       </div>
       <div>
-        <h4>Éditeur</h4>
+        <h4>Publisher</h4>
         <ul>
           <li>Sindal</li>
           <li><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></li>
         </ul>
       </div>
     </div>
-    <div class="bottom">Les pièces produites par Sindal appartiennent à leur auteur.</div>
+    <div class="bottom">Pieces produced with Sindal belong to their author.</div>
   </div>
 </footer>
 
-<script src="releases.js"></script>
+<script src="../releases.js"></script>
 <script>
 (function () {
   var select  = document.getElementById("version-select");
@@ -204,12 +211,12 @@ table.req td { color: var(--text-secondary); }
   var state   = document.getElementById("picker-state");
   var dateOut = document.getElementById("version-date");
 
-  /* Repli commun à toutes les pannes de l'API : la page des releases GitHub
-     reste consultable, et c'est le seul lien qu'on puisse garantir. */
+  /* Shared fallback for every API failure: the GitHub releases page stays
+     reachable, and it is the only link we can guarantee. */
   function offline(msg) {
     state.innerHTML = msg + ' <a href="' + SindalReleases.webUrl +
-      '">Ouvrir la liste des versions sur GitHub</a>.';
-    select.innerHTML = "<option>Indisponible</option>";
+      '">Open the version list on GitHub</a>.';
+    select.innerHTML = "<option>Unavailable</option>";
   }
 
   function assetRow(a) {
@@ -226,7 +233,7 @@ table.req td { color: var(--text-secondary); }
     var btn = document.createElement("a");
     btn.className = "btn btn-secondary btn-sm";
     btn.href = a.browser_download_url;
-    btn.textContent = "Télécharger";
+    btn.textContent = "Download";
 
     li.appendChild(name); li.appendChild(size); li.appendChild(btn);
     return li;
@@ -234,11 +241,11 @@ table.req td { color: var(--text-secondary); }
 
   function show(rel) {
     list.innerHTML = "";
-    dateOut.textContent = SindalReleases.date(rel) ? "publiée le " + SindalReleases.date(rel) : "";
+    dateOut.textContent = SindalReleases.date(rel) ? "released on " + SindalReleases.date(rel) : "";
 
-    /* Les paquets d'abord : ce sont eux qu'on vient chercher. Le reste
-       (nupkg, index de mise à jour) suit, sans être caché — c'est ce qui
-       permet une installation hors ligne ou un diagnostic. */
+    /* Installers first, since that is what people come for. The rest
+       (nupkg, update index) follows without being hidden: it is what
+       makes an offline install or a diagnosis possible. */
     var assets = (rel.assets || []).slice().sort(function (a, b) {
       var pa = /setup.*\.exe$|\.pkg$/i.test(a.name) ? 0 : 1;
       var pb = /setup.*\.exe$|\.pkg$/i.test(b.name) ? 0 : 1;
@@ -246,7 +253,7 @@ table.req td { color: var(--text-secondary); }
     });
 
     if (assets.length === 0) {
-      list.innerHTML = '<li><span class="fname">Aucun fichier joint à cette version.</span></li>';
+      list.innerHTML = '<li><span class="fname">No files attached to this version.</span></li>';
     } else {
       assets.forEach(function (a) { list.appendChild(assetRow(a)); });
     }
@@ -260,7 +267,7 @@ table.req td { color: var(--text-secondary); }
   }
 
   SindalReleases.fetchAll().then(function (releases) {
-    if (!releases.length) { offline("Aucune version publiée pour le moment."); return; }
+    if (!releases.length) { offline("No version published yet."); return; }
 
     state.textContent = "";
     select.disabled = false;
@@ -270,21 +277,21 @@ table.req td { color: var(--text-secondary); }
       var opt = document.createElement("option");
       opt.value = String(i);
       opt.textContent = "Sindal " + (SindalReleases.version(rel) || rel.tag_name) +
-                        (i === 0 ? "  —  dernière" : "") +
-                        (rel.prerelease ? "  (préversion)" : "");
+                        (i === 0 ? "  —  latest" : "") +
+                        (rel.prerelease ? "  (pre-release)" : "");
       select.appendChild(opt);
     });
 
     select.addEventListener("change", function () { show(releases[+select.value]); });
     show(releases[0]);
 
-    /* Cartes du haut : toujours la DERNIÈRE version, quoi que le sélecteur
-       affiche ensuite — c'est celle qu'on recommande d'installer. */
+    /* The two cards above always describe the LATEST version, whatever the
+       picker shows afterwards: that is the one we recommend installing. */
     var latest = releases[0];
     var v = SindalReleases.version(latest);
     document.getElementById("latest-line").textContent =
-      "Dernière version : " + v +
-      (SindalReleases.date(latest) ? ", publiée le " + SindalReleases.date(latest) : "") + ".";
+      "Latest version: " + v +
+      (SindalReleases.date(latest) ? ", released on " + SindalReleases.date(latest) : "") + ".";
 
     var win = SindalReleases.windowsAsset(latest);
     var mac = SindalReleases.macAsset(latest);
@@ -293,32 +300,32 @@ table.req td { color: var(--text-secondary); }
     if (win) {
       winBtn.href = win.browser_download_url;
       document.getElementById("meta-win").textContent =
-        "Windows 10 ou 11 · 64 bits · " + SindalReleases.size(win.size);
+        "Windows 10 or 11 · 64-bit · " + SindalReleases.size(win.size);
     } else {
       winBtn.setAttribute("aria-disabled", "true");
-      winBtn.textContent = "Aucun paquet Windows pour cette version";
+      winBtn.textContent = "No Windows package for this version";
     }
 
     var macBtn = document.getElementById("dl-mac");
     if (mac) {
       macBtn.href = mac.browser_download_url;
       document.getElementById("meta-mac").textContent =
-        "macOS Apple Silicon (arm64) · " + SindalReleases.size(mac.size);
+        "macOS on Apple Silicon (arm64) · " + SindalReleases.size(mac.size);
     } else {
       macBtn.setAttribute("aria-disabled", "true");
-      macBtn.textContent = "Aucun paquet macOS pour cette version";
+      macBtn.textContent = "No macOS package for this version";
     }
   }).catch(function () {
     document.getElementById("latest-line").textContent =
-      "Impossible de joindre GitHub pour lister les versions.";
+      "Could not reach GitHub to list the versions.";
     document.getElementById("dl-win").href = SindalReleases.latestUrl;
     document.getElementById("dl-mac").href = SindalReleases.latestUrl;
-    offline("La liste des versions n'a pas pu être chargée.");
+    offline("The version list could not be loaded.");
   });
 })();
 </script>
 
-<script src="motion.js"></script>
+<script src="../motion.js"></script>
 
 </body>
 </html>

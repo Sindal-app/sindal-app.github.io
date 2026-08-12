@@ -9,6 +9,9 @@
 <meta property="og:description" content="Une pièce originale en un clic. Puis la vôtre, mesure par mesure.">
 <meta property="og:type" content="website">
 <link rel="icon" href="img/logo.png" sizes="any">
+<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/index.html">
+<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/index.html">
+<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/index.html">
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -62,19 +65,9 @@ figure.shot img {
 }
 figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top: 12px; text-align: center; }
 
-/* Lecteurs audio */
+/* Lecteurs audio : titre + lecteur, rien de plus */
 .track { background: var(--card); border: 1px solid var(--border-subtle); border-radius: var(--r-xl); padding: 18px 20px; }
-.track .top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.track h3 { font-size: 1rem; }
-.track .theme {
-  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--secondary-soft); background: var(--secondary-surface);
-  border: 1px solid var(--secondary); border-radius: 999px; padding: 3px 10px;
-}
-.track dl { display: flex; gap: 6px 20px; flex-wrap: wrap; margin: 12px 0 14px; font-size: .8rem; }
-.track dl div { display: flex; gap: 6px; }
-.track dt { color: var(--text-muted); }
-.track dd { margin: 0; color: var(--text-secondary); font-family: var(--font-metric); }
+.track h3 { font-size: 1rem; margin-bottom: 14px; }
 .track audio { width: 100%; height: 40px; }
 
 /* Bloc de téléchargement de l'accueil */
@@ -95,12 +88,16 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
       <a href="#sons">Sons</a>
       <a href="telecharger.html">Télécharger</a>
     </nav>
+    <select class="lang" aria-label="Langue / Language">
+      <option value="" selected>FR</option>
+      <option value="en/index.html">EN</option>
+    </select>
   </div>
 </header>
 
 <!-- ══ HÉROS ══ -->
 <div class="hero">
-  <div class="wrap">
+  <div class="wrap hero-anim">
     <p class="eyebrow">Générateur de musique algorithmique</p>
     <h1>Une pièce originale en un clic.<br><span class="grad">Puis la vôtre, mesure par mesure.</span></h1>
     <p class="lead">
@@ -121,47 +118,47 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 
 <!-- ══ ARGUMENTS ══ -->
 <section id="pourquoi">
-  <div class="wrap">
-    <p class="eyebrow">Pourquoi Sindal</p>
-    <h2>Un moteur de théorie musicale, pas une boîte noire</h2>
-    <p class="intro">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Pourquoi Sindal</p>
+    <h2 data-reveal>Un moteur de théorie musicale, pas une boîte noire</h2>
+    <p class="intro" data-reveal>
       Sindal n'a rien appris sur de la musique existante. Il applique des règles d'écriture — gammes, degrés,
       conduite de voix, cadences — et compose à partir de vos réglages. Ce que vous obtenez ne ressemble à
       l'œuvre de personne, et ne pose aucune question de droits sur des données d'entraînement.
     </p>
 
-    <div class="grid grid-3">
-      <article class="card">
+    <div class="grid grid-3" data-stagger>
+      <article class="card" data-reveal>
         <div class="ico">🎼</div>
         <h3>La musique est à vous</h3>
         <p>Aucun abonnement, aucun filigrane, aucune clause sur ce que vous en faites. Les fichiers sortent
            sur votre disque, dans des formats ouverts.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">🔒</div>
         <h3>Rien ne quitte votre machine</h3>
         <p>Pas de compte, pas de serveur, pas de télémétrie. Sindal fonctionne entièrement hors ligne,
            y compris la synthèse sonore.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">✍️</div>
         <h3>Vous gardez la main</h3>
         <p>Une mesure ne vous plaît pas ? Générez-en trois variantes, écoutez-les en contexte, greffez celle
            que vous préférez. Ou éditez note à note.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">🎹</div>
         <h3>Le son est inclus</h3>
         <p>Une banque General MIDI complète est livrée avec l'application : Sindal joue et exporte du son dès
            l'installation, sans rien ajouter. <a href="#sons">En savoir plus</a>.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">📤</div>
         <h3>Formats ouverts</h3>
         <p>MIDI pour votre séquenceur, WAV pour le montage, MusicXML pour MuseScore ou Dorico, PNG pour la
            partition imprimable.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">⚡</div>
         <h3>Installation sans friction</h3>
         <p>Aucun runtime à poser au préalable, aucune élévation administrateur. L'application s'installe dans
@@ -173,57 +170,46 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 
 <!-- ══ ÉCOUTER ══ -->
 <section id="ecouter">
-  <div class="wrap">
-    <p class="eyebrow">Échantillons</p>
-    <h2>Écoutez avant d'installer</h2>
-    <p class="intro">
-      Quatre pièces produites par Sindal, sans aucune retouche humaine : réglages posés, bouton Générer,
-      export. Rendues avec la banque de sons livrée avec l'application.
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Écouter</p>
+    <h2 data-reveal>Six morceaux faits avec Sindal</h2>
+    <p class="intro" data-reveal>
+      Générés par l'application, puis retouchés dedans : mesures régénérées, notes déplacées, structure
+      ajustée. C'est ce que l'outil permet, du premier jet à la version qu'on garde.
     </p>
 
-    <div class="grid grid-2">
-      <article class="track">
-        <div class="top"><h3>Marche des hauteurs</h3><span class="theme">Épique</span></div>
-        <dl>
-          <div><dt>Tonique</dt><dd>Ré</dd></div>
-          <div><dt>Tempo</dt><dd>96 BPM</dd></div>
-          <div><dt>Mesures</dt><dd>24</dd></div>
-          <div><dt>Timbre</dt><dd>Cordes</dd></div>
-        </dl>
-        <audio controls preload="none" src="audio/epique.m4a"></audio>
+    <!-- Titre et lecteur, rien d'autre : les réglages qui ont produit ces
+         pièces n'apprennent rien à qui découvre l'application, et six fiches
+         chargées de métadonnées noyaient ce qu'on vient faire ici — écouter. -->
+    <div class="grid grid-2" data-stagger>
+      <article class="track" data-reveal>
+        <h3>L'aventure commence<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/l-aventure-commence.mp3"></audio>
       </article>
 
-      <article class="track">
-        <div class="top"><h3>Danse de lisière</h3><span class="theme">Celtique</span></div>
-        <dl>
-          <div><dt>Tonique</dt><dd>Sol</dd></div>
-          <div><dt>Tempo</dt><dd>112 BPM</dd></div>
-          <div><dt>Mesures</dt><dd>20</dd></div>
-          <div><dt>Timbre</dt><dd>Harpe</dd></div>
-        </dl>
-        <audio controls preload="none" src="audio/celtique.m4a"></audio>
+      <article class="track" data-reveal>
+        <h3>Symphonie<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/symphonie.m4a"></audio>
       </article>
 
-      <article class="track">
-        <div class="top"><h3>Chambre claire</h3><span class="theme">Rêveur</span></div>
-        <dl>
-          <div><dt>Tonique</dt><dd>Fa</dd></div>
-          <div><dt>Tempo</dt><dd>76 BPM</dd></div>
-          <div><dt>Mesures</dt><dd>20</dd></div>
-          <div><dt>Timbre</dt><dd>Piano</dd></div>
-        </dl>
-        <audio controls preload="none" src="audio/reveur.m4a"></audio>
+      <article class="track" data-reveal>
+        <h3>Ciel étoilé<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/ciel-etoile.mp3"></audio>
       </article>
 
-      <article class="track">
-        <div class="top"><h3>Sous la porte</h3><span class="theme">Mystérieux</span></div>
-        <dl>
-          <div><dt>Tonique</dt><dd>La</dd></div>
-          <div><dt>Tempo</dt><dd>88 BPM</dd></div>
-          <div><dt>Mesures</dt><dd>20</dd></div>
-          <div><dt>Timbre</dt><dd>Piano</dd></div>
-        </dl>
-        <audio controls preload="none" src="audio/mysterieux.m4a"></audio>
+      <article class="track" data-reveal>
+        <h3>Pyramide<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/pyramide.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Liberté<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/liberte.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Grandir<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/grandir.mp3"></audio>
       </article>
     </div>
   </div>
@@ -231,17 +217,17 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 
 <!-- ══ DÉMO ══ -->
 <section id="demo">
-  <div class="wrap">
-    <p class="eyebrow">Comment ça marche</p>
-    <h2>Quatre gestes, du réglage au fichier</h2>
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Comment ça marche</p>
+    <h2 data-reveal>Quatre gestes, du réglage au fichier</h2>
 
-    <figure class="shot">
+    <figure class="shot" data-reveal>
       <img src="img/app-creer.png" alt="L'onglet Création de Sindal : thème, tonique, instrument, tempo, mesures, refrain, et les curseurs de rythme." loading="lazy">
       <figcaption>L'onglet Création — chaque curseur porte un poids relatif, et affiche la part réelle qu'il prend dans le tirage.</figcaption>
     </figure>
 
     <div class="steps">
-      <div class="step">
+      <div class="step" data-reveal>
         <div>
           <h3>Régler</h3>
           <p>Neuf thèmes (joyeux, triste, épique, celtique, oriental, néoclassique…), douze toniques, le tempo,
@@ -249,7 +235,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
              d'harmonie, le profil rythmique, les silences, l'arc dynamique, la tessiture, le refrain.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step" data-reveal>
         <div>
           <h3>Générer</h3>
           <p>Le moteur écrit une mélodie, une main gauche et une basse cohérentes entre elles : les accords sont
@@ -257,7 +243,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
              par une vraie cadence avec ralenti.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step" data-reveal>
         <div>
           <h3>Écouter, puis retoucher</h3>
           <p>Sélectionnez les mesures qui ne vont pas. Sindal en propose trois variantes, écoutables en contexte,
@@ -265,7 +251,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
              sur une autre, ou ouvrir l'éditeur et déplacer les notes une par une.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step" data-reveal>
         <div>
           <h3>Sauvegarder</h3>
           <p>MIDI, WAV, partition PNG, MusicXML, et un projet <code>.sindal</code> qui rouvre la pièce exactement
@@ -278,31 +264,31 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 
 <!-- ══ SONS / BANQUES ══ -->
 <section id="sons">
-  <div class="wrap">
-    <p class="eyebrow">Le son</p>
-    <h2>Une banque de sons livrée, et les vôtres par-dessus</h2>
-    <p class="intro">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Le son</p>
+    <h2 data-reveal>Une banque de sons livrée, et les vôtres par-dessus</h2>
+    <p class="intro" data-reveal>
       Un fichier MIDI ne contient aucun son : il décrit des notes, il faut un instrument pour les jouer.
       Sindal embarque le sien, pour que l'application sonne dès l'installation — sans configuration, sans
       synthétiseur externe, sans connexion.
     </p>
 
-    <div class="grid grid-3">
-      <article class="card">
+    <div class="grid grid-3" data-stagger>
+      <article class="card" data-reveal>
         <div class="ico">🎛️</div>
         <h3>GeneralUser GS incluse</h3>
         <p>La SoundFont General MIDI de S. Christian Collins (32 Mo, 128 instruments) est installée avec
-           l'application. C'est elle qu'on entend dans les échantillons ci-dessus. Sa licence autorise
+           l'application, et suffit à jouer et exporter tout ce que vous composez. Sa licence autorise
            l'usage musical, y compris commercial.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">📚</div>
         <h3>Vos propres banques</h3>
         <p>Chargez n'importe quelle SoundFont <code>.sf2</code> ou une banque <code>.sfz</code> — un piano
            échantillonné complet fonctionne, chargement paresseux à l'appui. La banque choisie est
            mémorisée et rechargée au démarrage suivant.</p>
       </article>
-      <article class="card">
+      <article class="card" data-reveal>
         <div class="ico">💾</div>
         <h3>Export audio réel</h3>
         <p>Le WAV exporté est rendu par la banque active, pas par un synthétiseur système : ce que vous
@@ -310,7 +296,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
       </article>
     </div>
 
-    <p class="info-box">
+    <p class="info-box" data-reveal>
       Une banque <code>.sfz</code> ne décrit qu'un seul instrument : le sélecteur d'instrument se grise alors,
       et l'application explique pourquoi. C'est voulu — la banque <em>est</em> l'instrument.
     </p>
@@ -319,10 +305,10 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 
 <!-- ══ TÉLÉCHARGER ══ -->
 <section id="telecharger">
-  <div class="wrap">
-    <p class="eyebrow">Télécharger</p>
-    <h2>Installez Sindal</h2>
-    <p class="intro" id="version-line">Windows 10/11 64 bits, ou macOS Apple Silicon. Gratuit, sans compte.</p>
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Télécharger</p>
+    <h2 data-reveal>Installez Sindal</h2>
+    <p class="intro" id="version-line" data-reveal>Windows 10/11 64 bits, ou macOS Apple Silicon. Gratuit, sans compte.</p>
 
     <div class="dl-inline">
       <a class="btn btn-primary" id="dl-win" href="telecharger.html">Télécharger pour Windows</a>
@@ -334,7 +320,7 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
 
 <!-- ══ PIED ══ -->
 <footer class="site">
-  <div class="wrap">
+  <div class="wrap" data-stagger>
     <div class="cols">
       <div>
         <h4>Sindal</h4>
@@ -365,8 +351,8 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
       </div>
     </div>
     <div class="bottom">
-      Les pièces produites par Sindal appartiennent à leur auteur. Les échantillons de cette page ont été
-      générés par l'application, sans retouche.
+      Les pièces produites par Sindal appartiennent à leur auteur. Les morceaux de cette page ont été
+      composés avec l'application.
     </div>
   </div>
 </footer>
@@ -401,6 +387,8 @@ figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top
   }).catch(function () { /* liens vers telecharger.html conservés */ });
 })();
 </script>
+
+<script src="motion.js"></script>
 
 </body>
 </html>
