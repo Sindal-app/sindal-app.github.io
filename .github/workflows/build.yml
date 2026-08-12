@@ -1,0 +1,54 @@
+name: Générer le site
+
+# Toute modification d'une SOURCE régénère les six pages et les committe.
+# Changer une valeur dans `src/data.json` suffit donc : la propagation ne
+# demande aucune commande, aucun outil installé, et fonctionne depuis
+# l'éditeur web de GitHub comme depuis le poste.
+#
+# ⚠ Le filtre `paths` est aussi le garde-fou anti-boucle : le commit produit
+# par ce job ne touche QUE les pages de la racine, jamais `src/` ni
+# `build.mjs`. Il ne peut donc pas se redéclencher lui-même.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'build.mjs'
+  workflow_dispatch:   # régénération à la demande
+
+permissions:
+  contents: write      # nécessaire pour committer les pages régénérées
+
+# Deux poussées rapprochées produiraient deux commits concurrents sur la même
+# branche : la seconde exécution attend la première plutôt que d'échouer au push.
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Régénérer et committer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Aucune dépendance à installer : `build.mjs` n'utilise que Node.
+      - name: Générer
+        run: node build.mjs
+
+      - name: Committer les pages si elles ont changé
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Les pages étaient déjà à jour, rien à committer."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Régénère le site depuis src/"
+          git push
+          echo "Pages régénérées et poussées."

@@ -29,10 +29,23 @@ audio/                 6 morceaux composés avec Sindal
 
 ## Modifier le site
 
-1. Éditer dans `src/` — jamais les fichiers HTML de la racine.
-2. `node build.mjs`
-3. Committer **les sources ET les pages générées** : le déploiement reste un
-   glisser-déposer, personne n'a à installer d'outil pour publier.
+**Éditer dans `src/`, pousser. C'est tout.**
+
+Une modification de `src/data.json`, d'un fragment ou d'une page déclenche
+`.github/workflows/build.yml`, qui relance `node build.mjs` et committe les six
+pages régénérées. Changer l'adresse e-mail à un seul endroit la propage partout,
+sans commande à lancer ni outil à installer — y compris depuis l'éditeur web de
+GitHub, donc depuis un téléphone.
+
+En local, `node build.mjs` fait la même chose immédiatement, pour voir le rendu
+avant de pousser. Ce n'est jamais obligatoire.
+
+⚠ **Ne jamais éditer les fichiers HTML de la racine.** Ils sont écrasés à la
+génération suivante, et portent un en-tête qui le rappelle.
+
+⚠ Le filtre `paths` du workflow (`src/**`, `build.mjs`) est aussi le garde-fou
+anti-boucle : le commit produit par le job ne touche que les pages de la racine,
+il ne peut donc pas se redéclencher lui-même.
 
 Aucune dépendance : Node seul, pas de `npm install`. Le moteur de gabarit tient
 en trente lignes dans `build.mjs` ; une chaîne d'outils coûterait plus cher à
