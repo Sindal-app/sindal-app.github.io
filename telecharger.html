@@ -16,58 +16,7 @@
 <link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/telecharger.html">
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* ── Propre à la page de téléchargement ──────────────────────────── */
-.dl-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 34px; }
-.dl {
-  background: var(--card); border: 1px solid var(--border-subtle);
-  border-radius: var(--r-xl); padding: 26px 24px; display: flex; flex-direction: column;
-}
-.dl h3 { font-size: 1.15rem; }
-.dl .meta { font-family: var(--font-metric); font-size: .8rem; color: var(--text-muted); margin: 6px 0 18px; }
-.dl ul { margin: 0 0 22px; padding-left: 18px; color: var(--text-secondary); font-size: .9rem; }
-.dl ul li { margin-bottom: 5px; }
-.dl .btn { margin-top: auto; }
-.dl .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
 
-/* Sélecteur de version : registre SECONDAIRE (on CHOISIT), jamais violet */
-.picker {
-  background: var(--surface); border: 1px solid var(--border-subtle);
-  border-radius: var(--r-xl); padding: 22px 20px; margin-top: 34px;
-}
-.picker .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.picker label { font-size: .875rem; color: var(--text-secondary); font-weight: 600; }
-.picker select {
-  font: inherit; font-size: .95rem; font-family: var(--font-metric);
-  color: var(--text-primary); background: var(--raised);
-  border: 1px solid var(--border-strong); border-radius: var(--r-md);
-  padding: 9px 12px; min-width: 260px; cursor: pointer;
-}
-.picker select:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
-.picker select:hover { border-color: var(--secondary); }
-
-.assets { list-style: none; margin: 20px 0 0; padding: 0; }
-.assets li {
-  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  padding: 12px 14px; border: 1px solid var(--border-subtle);
-  border-radius: var(--r-lg); background: var(--card); margin-bottom: 8px;
-}
-.assets .fname { font-family: var(--font-metric); font-size: .85rem; word-break: break-all; }
-.assets .fsize { color: var(--text-muted); font-family: var(--font-metric); font-size: .8rem; margin-left: auto; }
-
-.notes {
-  margin-top: 20px; padding: 16px 18px; background: var(--card);
-  border: 1px solid var(--border-subtle); border-radius: var(--r-lg);
-  color: var(--text-secondary); font-size: .9rem; white-space: pre-wrap;
-  max-height: 340px; overflow: auto;
-}
-.state { color: var(--text-muted); font-size: .9rem; margin-top: 20px; }
-
-table.req { width: 100%; border-collapse: collapse; margin-top: 26px; font-size: .9rem; }
-table.req th, table.req td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
-table.req th { color: var(--text-secondary); font-weight: 600; width: 34%; }
-table.req td { color: var(--text-secondary); }
-</style>
 </head>
 
 <body>

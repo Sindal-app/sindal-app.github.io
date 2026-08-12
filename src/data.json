@@ -1,7 +1,7 @@
 {
   "_comment": "Source UNIQUE des informations répétées sur le site. Toute valeur écrite ici ne doit apparaître nulle part ailleurs en dur. Après modification : node build.mjs",
   "publisher": "Sindal",
-  "email": "yannick045@hotmail.fr",
+  "email": "sindal@gmail.fr",
   "baseUrl": "https://sindal-app.github.io/",
   "repo": "sindal-app/sindal-app.github.io",
   "host": {

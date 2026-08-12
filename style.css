@@ -51,7 +51,7 @@
   --font-metric: "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
 
   /* Rayons */
-  --r-sm: 4px; --r-md: 6px; --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px;
+  --r-sm: 0.25rem; --r-md: 0.375rem; --r-lg: 0.5rem; --r-xl: 0.75rem; --r-2xl: 1rem;
 
   /* Mouvement : les trois durées de l'application, pour les RÉACTIONS
      (survol, pression, changement d'état). Elles sont calibrées pour une
@@ -86,13 +86,13 @@ body {
   background: var(--canvas);
   color: var(--text-primary);
   font-family: var(--font-ui);
-  font-size: 16px;
+  font-size: 1rem;   /* = préférence du navigateur */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-.wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
-.wrap-narrow { width: min(820px, calc(100% - 48px)); margin-inline: auto; }
+.wrap { width: min(70rem, calc(100% - 3rem)); margin-inline: auto; }
+.wrap-narrow { width: min(51.25rem, calc(100% - 3rem)); margin-inline: auto; }
 
 h1, h2, h3, h4 { line-height: 1.25; margin: 0; font-weight: 700; }
 
@@ -102,13 +102,13 @@ a:hover { text-decoration: underline; }
 code {
   font-family: var(--font-metric); font-size: .9em;
   background: var(--raised); border: 1px solid var(--border-strong);
-  border-radius: var(--r-sm); padding: 1px 5px;
+  border-radius: var(--r-sm); padding: 0.0625rem 0.3125rem;
 }
 
 /* Étiquette de section : petite capitale accentuée, comme SectionLabel */
 .eyebrow {
   font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--text-accent); margin: 0 0 10px;
+  color: var(--text-accent); margin: 0 0 0.625rem;
 }
 
 /* ── En-tête ─────────────────────────────────────────────────────── */
@@ -118,15 +118,15 @@ header.site {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
 }
-.nav { display: flex; align-items: center; gap: 14px; padding: 12px 0; }
-.nav .brand { display: flex; align-items: center; gap: 14px; color: inherit; }
+.nav { display: flex; align-items: center; gap: 0.875rem; padding: 0.75rem 0; }
+.nav .brand { display: flex; align-items: center; gap: 0.875rem; color: inherit; }
 .nav .brand:hover { text-decoration: none; }
-.nav img { width: 34px; height: 34px; }
+.nav img { width: 2.125rem; height: 2.125rem; }
 .nav .name { font-weight: 700; letter-spacing: .22em; font-size: 1rem; }
-.nav nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+.nav nav { margin-left: auto; display: flex; gap: 0.25rem; flex-wrap: wrap; }
 .nav nav a {
   color: var(--text-secondary); font-size: .875rem; font-weight: 600;
-  padding: 7px 12px; border-radius: var(--r-md);
+  padding: 0.4375rem 0.75rem; border-radius: var(--r-md);
   transition: color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
 }
 .nav nav a:hover { color: var(--text-primary); background: var(--raised); text-decoration: none; }
@@ -134,8 +134,8 @@ header.site {
 
 /* ── Boutons (hiérarchie de l'app : primaire / secondaire) ───────── */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 13px 26px; border-radius: var(--r-lg);
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+  padding: 0.8125rem 1.625rem; border-radius: var(--r-lg);
   font: inherit; font-weight: 600; font-size: .95rem;
   border: 1px solid transparent; cursor: pointer;
   transition: transform var(--dur-quick) var(--ease-out),
@@ -154,39 +154,39 @@ header.site {
 }
 .btn-secondary:hover { background: var(--hover); border-color: var(--accent); }
 .btn .sub { font-weight: 400; font-size: .8rem; opacity: .78; }
-.btn-sm { padding: 9px 16px; font-size: .875rem; }
+.btn-sm { padding: 0.5625rem 1rem; font-size: .875rem; }
 
 /* ── Sections ────────────────────────────────────────────────────── */
-section { padding: 72px 0; border-top: 1px solid var(--border-subtle); scroll-margin-top: 70px; }
+section { padding: 4.5rem 0; border-top: 1px solid var(--border-subtle); scroll-margin-top: 4.375rem; }
 section > .wrap > h2, section > .wrap-narrow > h2 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); letter-spacing: -.01em; }
-p.intro { color: var(--text-secondary); max-width: 68ch; margin: 14px 0 0; }
+p.intro { color: var(--text-secondary); max-width: 68ch; margin: 0.875rem 0 0; }
 
 /* En-tête de page secondaire (téléchargement, légal) */
-.page-head { padding: 56px 0 40px; }
+.page-head { padding: 3.5rem 0 2.5rem; }
 .page-head h1 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); letter-spacing: -.02em; }
 
 /* ── Cartes ──────────────────────────────────────────────────────── */
-.grid { display: grid; gap: 18px; margin-top: 40px; }
-.grid-3 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
-.grid-2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.grid { display: grid; gap: 1.125rem; margin-top: 2.5rem; }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(18.125rem, 100%), 1fr)); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(21.25rem, 100%), 1fr)); }
 
 .card {
   background: var(--card); border: 1px solid var(--border-subtle);
-  border-radius: var(--r-xl); padding: 22px 20px;
+  border-radius: var(--r-xl); padding: 1.375rem 1.25rem;
   transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
 }
 .card:hover { border-color: var(--border-strong); background: color-mix(in srgb, var(--card) 80%, var(--raised)); }
-.card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
 .card p { color: var(--text-secondary); font-size: .925rem; margin: 0; }
 .card .ico {
-  width: 38px; height: 38px; border-radius: var(--r-lg); margin-bottom: 14px;
+  width: 2.375rem; height: 2.375rem; border-radius: var(--r-lg); margin-bottom: 0.875rem;
   display: grid; place-items: center; font-size: 1.15rem;
   background: var(--accent-surface); border: 1px solid var(--accent);
 }
 
 /* Encart d'avertissement : famille ambre, zone à part et non alerte */
 .notice {
-  margin-top: 24px; padding: 14px 16px;
+  margin-top: 1.5rem; padding: 0.875rem 1rem;
   background: color-mix(in srgb, var(--warning-accent) 12%, transparent);
   border: 1px solid var(--warning-accent); border-left-width: 3px;
   border-radius: var(--r-lg); color: var(--warning-text); font-size: .875rem;
@@ -195,7 +195,7 @@ p.intro { color: var(--text-secondary); max-width: 68ch; margin: 14px 0 0; }
 
 /* Encart d'information : registre bleu, jamais un fond plein (Tokens § INFO) */
 .info-box {
-  margin-top: 24px; padding: 14px 16px;
+  margin-top: 1.5rem; padding: 0.875rem 1rem;
   border: 1px solid var(--info); border-left-width: 3px;
   border-radius: var(--r-lg); color: var(--text-secondary); font-size: .875rem;
   background: color-mix(in srgb, var(--info) 8%, transparent);
@@ -204,18 +204,18 @@ p.intro { color: var(--text-secondary); max-width: 68ch; margin: 14px 0 0; }
 /* ── Pied de page ────────────────────────────────────────────────── */
 footer.site {
   border-top: 1px solid var(--border-subtle); background: var(--surface);
-  padding: 44px 0 52px; color: var(--text-muted); font-size: .85rem;
+  padding: 2.75rem 0 3.25rem; color: var(--text-muted); font-size: .85rem;
 }
 footer.site h4 { color: var(--text-secondary); font-size: .8rem; letter-spacing: .1em;
-                 text-transform: uppercase; margin: 0 0 10px; }
-footer.site .cols { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+                 text-transform: uppercase; margin: 0 0 0.625rem; }
+footer.site .cols { display: grid; gap: 1.875rem; grid-template-columns: repeat(auto-fit, minmax(min(14.375rem, 100%), 1fr)); }
 footer.site ul { list-style: none; margin: 0; padding: 0; }
-footer.site li { margin-bottom: 5px; }
-footer.site .bottom { margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--border-subtle); }
+footer.site li { margin-bottom: 0.3125rem; }
+footer.site .bottom { margin-top: 2.125rem; padding-top: 1.25rem; border-top: 1px solid var(--border-subtle); }
 
-@media (max-width: 640px) {
-  .wrap, .wrap-narrow { width: calc(100% - 32px); }
-  section { padding: 56px 0; }
+@media (max-width: 40em) {
+  .wrap, .wrap-narrow { width: calc(100% - 2rem); }
+  section { padding: 3.5rem 0; }
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -295,8 +295,8 @@ header.site.is-scrolled {
    en page à chaque image. */
 .nav nav a { position: relative; }
 .nav nav a::after {
-  content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px;
-  height: 1.5px; border-radius: 1px; background: var(--accent-soft);
+  content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.1875rem;
+  height: 0.0938rem; border-radius: 0.0625rem; background: var(--accent-soft);
   transform: scaleX(0); transform-origin: left;
   transition: transform var(--dur-base) var(--ease-quart);
 }
@@ -344,12 +344,12 @@ a:focus-visible {
 .track:hover { transform: translate3d(0, -2px, 0); }
 .track.is-playing { border-color: var(--accent); }
 
-.track h3 { display: flex; align-items: center; gap: 10px; }
+.track h3 { display: flex; align-items: center; gap: 0.625rem; }
 
-.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 13px; opacity: 0; }
+.eq { display: inline-flex; align-items: flex-end; gap: 0.125rem; height: 0.8125rem; opacity: 0; }
 .track.is-playing .eq { opacity: 1; }
 .eq i {
-  width: 2.5px; height: 100%; border-radius: 1px;
+  width: 0.1563rem; height: 100%; border-radius: 0.0625rem;
   background: var(--accent-soft);
   transform: scaleY(.25); transform-origin: bottom;
 }
@@ -398,9 +398,252 @@ a:focus-visible {
   font: inherit; font-size: .8rem; font-weight: 600;
   color: var(--text-secondary); background: var(--raised);
   border: 1px solid var(--border-strong); border-radius: var(--r-md);
-  padding: 6px 8px; margin-left: 6px; cursor: pointer;
+  padding: 0.375rem 0.5rem; margin-left: 0.375rem; cursor: pointer;
   transition: border-color var(--dur-base) var(--ease-out),
               color var(--dur-base) var(--ease-out);
 }
 .lang:hover { color: var(--text-primary); border-color: var(--secondary); }
 .lang:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   STYLES DE PAGE
+
+   Remontés ici depuis les six sources : chaque bloc existait en double,
+   une fois en français une fois en anglais. Les classes sont propres à
+   une page, la feuille est commune — c'est le prix à payer pour n'avoir
+   qu'un seul endroit à corriger, notamment sur le rendu mobile.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Accueil ─────────────────────────────────────────────────────── */
+/* ── Propre à l'accueil ──────────────────────────────────────────── */
+
+/* Lueur du héros posée en fond de la SECTION, pas dans un pseudo-élément
+   décalé : rogné par `overflow`, il laissait une couture rectangulaire
+   nette en haut à gauche. En fond, le dégradé s'éteint dans sa boîte. */
+.hero {
+  padding: 4.75rem 0 4rem;
+  background:
+    radial-gradient(58% 78% at 22% 30%, var(--accent-night) 0%, transparent 68%),
+    radial-gradient(46% 62% at 88% 8%, var(--secondary-surface) 0%, transparent 62%);
+}
+.hero h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); letter-spacing: -.02em; }
+.hero h1 .grad {
+  background: linear-gradient(120deg, var(--accent-soft), var(--secondary-soft));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p.lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary);
+  max-width: 60ch; margin: 1.25rem 0 0;
+}
+.hero .cta { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-top: 2.125rem; }
+.hero .reassure {
+  margin-top: 1.25rem; color: var(--text-muted); font-size: .875rem;
+  display: flex; gap: 0.5rem 1.375rem; flex-wrap: wrap;
+}
+.hero .reassure span::before { content: "✓ "; color: var(--success); }
+
+/* Étapes numérotées */
+.steps { counter-reset: step; margin-top: 2.125rem; }
+.step { display: flex; gap: 1.125rem; padding: 1.125rem 0; border-bottom: 1px solid var(--border-subtle); }
+.step:last-child { border-bottom: 0; }
+.step::before {
+  counter-increment: step; content: counter(step);
+  flex: 0 0 2.125rem; height: 2.125rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent-surface); border: 1px solid var(--accent);
+  color: var(--text-accent); font-family: var(--font-metric); font-size: .9rem; font-weight: 700;
+}
+.step h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+.step p { margin: 0; color: var(--text-secondary); font-size: .925rem; }
+
+/* Capture */
+figure.shot { margin: 2.5rem 0 0; }
+figure.shot img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border-strong); border-radius: var(--r-xl);
+  background: var(--canvas-deep);
+}
+figure.shot figcaption { color: var(--text-muted); font-size: .85rem; margin-top: 0.75rem; text-align: center; }
+
+/* Lecteurs audio : titre + lecteur, rien de plus */
+.track { background: var(--card); border: 1px solid var(--border-subtle); border-radius: var(--r-xl); padding: 1.125rem 1.25rem; }
+.track h3 { font-size: 1rem; margin-bottom: 0.875rem; }
+.track audio { width: 100%; height: 2.5rem; }
+
+/* Bloc de téléchargement de l'accueil */
+.dl-inline { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-top: 2.125rem; }
+@media (max-width: 40em) { .hero { padding: 3.25rem 0 2.75rem; } }
+
+/* ── Page Télécharger ────────────────────────────────────────────── */
+/* ── Propre à la page de téléchargement ──────────────────────────── */
+.dl-grid { display: grid; gap: 1.125rem; grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr)); margin-top: 2.125rem; }
+.dl {
+  background: var(--card); border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl); padding: 1.625rem 1.5rem; display: flex; flex-direction: column;
+}
+.dl h3 { font-size: 1.15rem; }
+.dl .meta { font-family: var(--font-metric); font-size: .8rem; color: var(--text-muted); margin: 0.375rem 0 1.125rem; }
+.dl ul { margin: 0 0 1.375rem; padding-left: 1.125rem; color: var(--text-secondary); font-size: .9rem; }
+.dl ul li { margin-bottom: 0.3125rem; }
+.dl .btn { margin-top: auto; }
+.dl .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+
+/* Sélecteur de version : registre SECONDAIRE (on CHOISIT), jamais violet */
+.picker {
+  background: var(--surface); border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl); padding: 1.375rem 1.25rem; margin-top: 2.125rem;
+}
+.picker .row { display: flex; align-items: center; gap: 0.875rem; flex-wrap: wrap; }
+.picker label { font-size: .875rem; color: var(--text-secondary); font-weight: 600; }
+.picker select {
+  font: inherit; font-size: .95rem; font-family: var(--font-metric);
+  color: var(--text-primary); background: var(--raised);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  padding: 0.5625rem 0.75rem; min-width: 16.25rem; cursor: pointer;
+}
+.picker select:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+.picker select:hover { border-color: var(--secondary); }
+
+.assets { list-style: none; margin: 1.25rem 0 0; padding: 0; }
+.assets li {
+  display: flex; align-items: center; gap: 0.875rem; flex-wrap: wrap;
+  padding: 0.75rem 0.875rem; border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg); background: var(--card); margin-bottom: 0.5rem;
+}
+.assets .fname { font-family: var(--font-metric); font-size: .85rem; word-break: break-all; }
+.assets .fsize { color: var(--text-muted); font-family: var(--font-metric); font-size: .8rem; margin-left: auto; }
+
+.notes {
+  margin-top: 1.25rem; padding: 1rem 1.125rem; background: var(--card);
+  border: 1px solid var(--border-subtle); border-radius: var(--r-lg);
+  color: var(--text-secondary); font-size: .9rem; white-space: pre-wrap;
+  max-height: 21.25rem; overflow: auto;
+}
+.state { color: var(--text-muted); font-size: .9rem; margin-top: 1.25rem; }
+
+table.req { width: 100%; border-collapse: collapse; margin-top: 1.625rem; font-size: .9rem; }
+table.req th, table.req td { text-align: left; padding: 0.6875rem 0.75rem; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+table.req th { color: var(--text-secondary); font-weight: 600; width: 34%; }
+table.req td { color: var(--text-secondary); }
+
+/* ── Page Mentions légales ───────────────────────────────────────── */
+/* ── Propre à la page légale ─────────────────────────────────────── */
+.legal h2 { font-size: 1.4rem; margin-top: 0; }
+.legal h3 { font-size: 1.05rem; margin: 1.625rem 0 0.5rem; color: var(--text-primary); }
+.legal p, .legal li { color: var(--text-secondary); font-size: .95rem; }
+.legal ul { padding-left: 1.25rem; }
+.legal li { margin-bottom: 0.375rem; }
+
+table.id { width: 100%; border-collapse: collapse; margin-top: 1.125rem; font-size: .95rem; }
+table.id th, table.id td { text-align: left; padding: 0.6875rem 0.75rem; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+table.id th { color: var(--text-secondary); font-weight: 600; width: 32%; }
+table.id td { color: var(--text-primary); }
+
+table.tiers { width: 100%; border-collapse: collapse; margin-top: 1.125rem; font-size: .9rem; }
+table.tiers th, table.tiers td { text-align: left; padding: 0.625rem 0.75rem; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+table.tiers thead th { color: var(--text-accent); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+table.tiers td { color: var(--text-secondary); }
+table.tiers td:first-child { color: var(--text-primary); font-weight: 600; white-space: nowrap; }
+
+details {
+  margin-top: 0.875rem; background: var(--card);
+  border: 1px solid var(--border-subtle); border-radius: var(--r-lg);
+}
+details > summary {
+  cursor: pointer; padding: 0.8125rem 1rem; font-weight: 600; font-size: .9rem;
+  color: var(--text-accent); list-style-position: inside;
+  border-radius: var(--r-lg);
+}
+details > summary:hover { background: var(--raised); }
+details[open] > summary { border-bottom: 1px solid var(--border-subtle); border-radius: var(--r-lg) var(--r-lg) 0 0; }
+details pre {
+  margin: 0; padding: 1rem; overflow-x: auto;
+  font-family: var(--font-metric); font-size: .78rem; line-height: 1.6;
+  color: var(--text-secondary); white-space: pre-wrap;
+}
+
+/* Sommaire */
+.toc { margin-top: 1.75rem; padding: 1.125rem 1.25rem; background: var(--surface);
+       border: 1px solid var(--border-subtle); border-radius: var(--r-xl); }
+.toc ol { margin: 0; padding-left: 1.25rem; }
+.toc li { margin-bottom: 0.3125rem; font-size: .9rem; }
+
+/* ══════════════════════════════════════════════════════════════════
+   TÉLÉPHONE
+
+   Trois débordements horizontaux mesurés à 390 px, trois causes
+   indépendantes — corrigées ici, pas masquées par un `overflow:hidden`
+   sur le body : masquer un débordement le laisse revenir ailleurs, et
+   empêche de le voir la fois suivante.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ⚠ `.nav` n'avait AUCUN `flex-wrap` : marque + cinq liens + sélecteur
+   réclamaient ~530 px sur une ligne, contre 390 disponibles. C'est ce
+   qui poussait la navigation hors de l'écran ET créait le défilement
+   horizontal. La règle vaut à toute largeur : une ligne qui ne peut pas
+   se replier finit toujours par déborder de quelque chose. */
+.nav { flex-wrap: wrap; }
+
+@media (max-width: 45em) {
+  /* Première ligne : marque à gauche, langue à droite. Seconde ligne :
+     la navigation, pleine largeur. `order` évite de réécrire le HTML —
+     le balisage reste dans l'ordre de lecture, à la source comme au
+     clavier. */
+  .nav { gap: 0.5rem 0.625rem; }
+  .nav .brand { flex: 1 1 auto; }
+  .nav .lang { order: 2; margin-left: auto; }
+  .nav nav {
+    order: 3;
+    flex: 1 0 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+    gap: 0.125rem;
+  }
+  .nav nav a { padding: 0.4375rem 0.625rem; }
+  .nav .name { letter-spacing: .16em; }
+
+  /* Tableaux clé/valeur : empilés plutôt que serrés en deux colonnes.
+     `table.req` réclamait 928 px de largeur minimale — aucun réglage de
+     pourcentage ne rattrape ça, il faut changer de forme. */
+  table.req, table.id, table.req tbody, table.id tbody,
+  table.req tr, table.id tr, table.req th, table.id th,
+  table.req td, table.id td { display: block; width: auto; }
+  table.req tr, table.id tr { padding: 0.75rem 0; border-bottom: 1px solid var(--border-subtle); }
+  table.req th, table.id th { padding: 0 0 0.25rem; border: 0; }
+  table.req td, table.id td { padding: 0; border: 0; }
+  table.req tr:last-child, table.id tr:last-child { border-bottom: 0; }
+
+  /* Le tableau des composants tiers garde ses trois colonnes (elles se
+     lisent ensemble) mais défile dans SA propre boîte, jamais dans la
+     page. `white-space: nowrap` sur la 1re colonne était le second
+     coupable : il interdisait tout repli. */
+  .legal table.tiers { display: block; overflow-x: auto; }
+  .legal table.tiers td:first-child { white-space: normal; }
+
+  /* Sélecteur de version : 260 px imposés + étiquette + espaces = 378 px,
+     soit plus que l'écran. Il prend toute la largeur et passe dessous. */
+  .picker select { min-width: 0; width: 100%; }
+  .picker .row { gap: 0.5rem; }
+  .picker label { flex: 1 0 100%; }
+
+  /* Ligne de fichier : le nom peut être long, le bouton doit rester
+     atteignable — il passe à la ligne au lieu de pousser le reste. */
+  .assets li { gap: 0.5rem 0.75rem; }
+  .assets .fsize { margin-left: 0; }
+
+  /* Le pied de page passe en une colonne : à 390 px, `minmax(min(14.375rem, 100%), 1fr)`
+     tenait encore, mais deux colonnes de 180 px illisibles. */
+  footer.site .cols { grid-template-columns: 1fr; gap: 1.375rem; }
+}
+
+/* Garde-fou : une image ou un média ne déborde jamais de son conteneur,
+   quelle que soit sa taille intrinsèque. */
+img, audio, video, svg { max-width: 100%; }
+
+/* ⚠ `minmax(Xrem, 1fr)` seul DÉBORDE sous X : la piste garde sa largeur
+   minimale même quand le conteneur est plus étroit. Mesuré à 320 px :
+   36 px de débordement sur la grille des morceaux, 16 px sur celle des
+   téléchargements. `min(Xrem, 100%)` laisse la piste se réduire à la
+   largeur disponible — c'est la seule forme correcte pour une grille
+   fluide, et elle est appliquée partout ci-dessus. */

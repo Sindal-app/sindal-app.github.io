@@ -183,3 +183,49 @@ Trois règles tenues :
 Celui-ci ne révèle que ce qu'il voit PASSER : sur une arrivée directe à une ancre
 (`…/#sons`, lien partagé, signet), la section visée restait invisible. Mesuré
 avant correctif : 2 éléments révélés sur 35.
+
+## Unités et rendu mobile
+
+**Aucune unité fixe pour la mise en page.** Typographie, espacements, gouttières,
+rayons et largeurs sont en `rem` ; les points de rupture en `em`. Tout suit donc
+la taille de police choisie par l'utilisateur, et le zoom du navigateur.
+
+Restent volontairement en pixels :
+
+| Ce qui reste en `px` | Pourquoi |
+|---|---|
+| `border`, `outline` | un trait d'un pixel doit rester un trait d'un pixel ; en `rem` il se rend flou et grossit à contretemps |
+| `blur()` | c'est un effet, pas une mesure de mise en page |
+| `transform: translate3d(…)` | déplacements de l'animation, sans rapport avec la taille du texte |
+
+Les valeurs viennent de `Theme/Tokens.axaml` (design system de l'application),
+converties mécaniquement sur une base de 16 px. La source de vérité reste le
+fichier de l'application ; la conversion est réversible.
+
+⚠ **`minmax(Xrem, 1fr)` seul DÉBORDE sous X.** Une piste de grille garde sa
+largeur minimale même quand le conteneur est plus étroit. Toujours écrire
+`minmax(min(Xrem, 100%), 1fr)`. C'est la forme employée partout dans la feuille.
+
+### Ce qui avait cassé sur téléphone
+
+Trois causes indépendantes, toutes mesurées avant correction :
+
+1. **`.nav` n'avait aucun `flex-wrap`** — marque + cinq liens + sélecteur de
+   langue réclamaient ~530 px sur une seule ligne. C'est ce qui poussait la
+   navigation hors de l'écran et créait le défilement horizontal.
+2. **`table.req` réclamait 928 px** de largeur minimale. Aucun réglage de
+   pourcentage ne rattrape ça : les tableaux clé/valeur s'empilent sous 45 em.
+3. **`.picker select { min-width: 260px }`** — 378 px avec l'étiquette, plus que
+   l'écran.
+
+Plus deux débordements résiduels à 320 px, dus aux grilles `minmax` sans `min()`.
+
+### Vérification
+
+Le débordement horizontal ne se juge pas à l'œil sur une fenêtre redimensionnée :
+le navigateur impose une largeur minimale (~481 px en headless) qui masque
+justement les cas à problème. La mesure passe par CDP, avec
+`Emulation.setDeviceMetricsOverride`, et compare `scrollWidth` à `clientWidth`.
+
+Étalon actuel, **6 pages × 6 largeurs (320, 360, 390, 430, 768, 1280 px) : zéro
+débordement**. À refaire après toute modification de mise en page.
