@@ -1,0 +1,206 @@
+/* ══════════════════════════════════════════════════════════════════
+   Sindal — feuille de style du site vitrine.
+
+   Les jetons sont RECOPIÉS de Sindal/Theme/Tokens.axaml, source unique
+   du design system de l'application. Ne rien inventer ici : toute
+   couleur, tout rayon, toute durée vient de ce fichier-là.
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Surfaces : Canvas → Surface → Card → Raised → Hover (un niveau = un rôle) */
+  --canvas-deep: #06060D;
+  --canvas:      #0B0B14;
+  --surface:     #12121F;
+  --card:        #1A1A2E;
+  --raised:      #24243D;
+  --hover:       #30304F;
+
+  /* Bordures : ALIAS de Raised et Hover, jamais des crans indépendants */
+  --border-subtle: #24243D;
+  --border-strong: #30304F;
+
+  /* Accent (violet) : action et identité */
+  --accent:         #7C3AED;
+  --accent-hover:   #9333EA;
+  --accent-deep:    #6D28D9;
+  --accent-soft:    #A78BFA;
+  --accent-surface: #2A1A55;
+  --accent-night:   #190B3C;
+
+  /* Secondaire (turquoise) : ce qui est CHOISI, jamais ce qui est cliquable */
+  --secondary:         #0891B2;
+  --secondary-soft:    #67E8F9;
+  --secondary-surface: #0C3944;
+
+  /* Texte */
+  --text-primary:   #E8EAF2;
+  --text-secondary: #9AA3B8;
+  --text-muted:     #6B7387;
+  --text-on-accent: #FFFFFF;
+  --text-accent:    #A78BFA;
+
+  /* Sémantique */
+  --success:        #34D399;
+  --warning:        #FB923C;
+  --warning-accent: #FBBF24;
+  --warning-text:   #FDE68A;
+  --danger:         #EF4444;
+  --info:           #3B82F6;
+
+  /* Typographie */
+  --font-ui:     "Segoe UI", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-metric: "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+
+  /* Rayons */
+  --r-sm: 4px; --r-md: 6px; --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px;
+
+  /* Mouvement : trois durées seulement */
+  --dur-quick: .08s;
+  --dur-base:  .16s;
+  --dur-slow:  .28s;
+  --ease-out:  cubic-bezier(.215, .61, .355, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+.wrap-narrow { width: min(820px, calc(100% - 48px)); margin-inline: auto; }
+
+h1, h2, h3, h4 { line-height: 1.25; margin: 0; font-weight: 700; }
+
+a { color: var(--text-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: var(--font-metric); font-size: .9em;
+  background: var(--raised); border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm); padding: 1px 5px;
+}
+
+/* Étiquette de section : petite capitale accentuée, comme SectionLabel */
+.eyebrow {
+  font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-accent); margin: 0 0 10px;
+}
+
+/* ── En-tête ─────────────────────────────────────────────────────── */
+header.site {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--canvas) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav { display: flex; align-items: center; gap: 14px; padding: 12px 0; }
+.nav .brand { display: flex; align-items: center; gap: 14px; color: inherit; }
+.nav .brand:hover { text-decoration: none; }
+.nav img { width: 34px; height: 34px; }
+.nav .name { font-weight: 700; letter-spacing: .22em; font-size: 1rem; }
+.nav nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+.nav nav a {
+  color: var(--text-secondary); font-size: .875rem; font-weight: 600;
+  padding: 7px 12px; border-radius: var(--r-md);
+  transition: color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+}
+.nav nav a:hover { color: var(--text-primary); background: var(--raised); text-decoration: none; }
+.nav nav a[aria-current="page"] { color: var(--text-accent); background: var(--accent-surface); }
+
+/* ── Boutons (hiérarchie de l'app : primaire / secondaire) ───────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 26px; border-radius: var(--r-lg);
+  font: inherit; font-weight: 600; font-size: .95rem;
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform var(--dur-quick) var(--ease-out),
+              background var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: var(--text-on-accent);
+}
+.btn-primary:hover { background: linear-gradient(135deg, var(--accent-hover), var(--accent)); }
+.btn-secondary {
+  background: var(--raised); color: var(--text-primary); border-color: var(--border-strong);
+}
+.btn-secondary:hover { background: var(--hover); border-color: var(--accent); }
+.btn .sub { font-weight: 400; font-size: .8rem; opacity: .78; }
+.btn-sm { padding: 9px 16px; font-size: .875rem; }
+
+/* ── Sections ────────────────────────────────────────────────────── */
+section { padding: 72px 0; border-top: 1px solid var(--border-subtle); scroll-margin-top: 70px; }
+section > .wrap > h2, section > .wrap-narrow > h2 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); letter-spacing: -.01em; }
+p.intro { color: var(--text-secondary); max-width: 68ch; margin: 14px 0 0; }
+
+/* En-tête de page secondaire (téléchargement, légal) */
+.page-head { padding: 56px 0 40px; }
+.page-head h1 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); letter-spacing: -.02em; }
+
+/* ── Cartes ──────────────────────────────────────────────────────── */
+.grid { display: grid; gap: 18px; margin-top: 40px; }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+
+.card {
+  background: var(--card); border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl); padding: 22px 20px;
+  transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+}
+.card:hover { border-color: var(--border-strong); background: color-mix(in srgb, var(--card) 80%, var(--raised)); }
+.card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.card p { color: var(--text-secondary); font-size: .925rem; margin: 0; }
+.card .ico {
+  width: 38px; height: 38px; border-radius: var(--r-lg); margin-bottom: 14px;
+  display: grid; place-items: center; font-size: 1.15rem;
+  background: var(--accent-surface); border: 1px solid var(--accent);
+}
+
+/* Encart d'avertissement : famille ambre, zone à part et non alerte */
+.notice {
+  margin-top: 24px; padding: 14px 16px;
+  background: color-mix(in srgb, var(--warning-accent) 12%, transparent);
+  border: 1px solid var(--warning-accent); border-left-width: 3px;
+  border-radius: var(--r-lg); color: var(--warning-text); font-size: .875rem;
+}
+.notice strong { color: var(--warning-accent); }
+
+/* Encart d'information : registre bleu, jamais un fond plein (Tokens § INFO) */
+.info-box {
+  margin-top: 24px; padding: 14px 16px;
+  border: 1px solid var(--info); border-left-width: 3px;
+  border-radius: var(--r-lg); color: var(--text-secondary); font-size: .875rem;
+  background: color-mix(in srgb, var(--info) 8%, transparent);
+}
+
+/* ── Pied de page ────────────────────────────────────────────────── */
+footer.site {
+  border-top: 1px solid var(--border-subtle); background: var(--surface);
+  padding: 44px 0 52px; color: var(--text-muted); font-size: .85rem;
+}
+footer.site h4 { color: var(--text-secondary); font-size: .8rem; letter-spacing: .1em;
+                 text-transform: uppercase; margin: 0 0 10px; }
+footer.site .cols { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+footer.site ul { list-style: none; margin: 0; padding: 0; }
+footer.site li { margin-bottom: 5px; }
+footer.site .bottom { margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--border-subtle); }
+
+@media (max-width: 640px) {
+  .wrap, .wrap-narrow { width: calc(100% - 32px); }
+  section { padding: 56px 0; }
+}

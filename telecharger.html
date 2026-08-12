@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Télécharger Sindal</title>
+<meta name="description" content="Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication.">
+<link rel="icon" href="img/logo.png" sizes="any">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ── Propre à la page de téléchargement ──────────────────────────── */
+.dl-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 34px; }
+.dl {
+  background: var(--card); border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl); padding: 26px 24px; display: flex; flex-direction: column;
+}
+.dl h3 { font-size: 1.15rem; }
+.dl .meta { font-family: var(--font-metric); font-size: .8rem; color: var(--text-muted); margin: 6px 0 18px; }
+.dl ul { margin: 0 0 22px; padding-left: 18px; color: var(--text-secondary); font-size: .9rem; }
+.dl ul li { margin-bottom: 5px; }
+.dl .btn { margin-top: auto; }
+.dl .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+
+/* Sélecteur de version : registre SECONDAIRE (on CHOISIT), jamais violet */
+.picker {
+  background: var(--surface); border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl); padding: 22px 20px; margin-top: 34px;
+}
+.picker .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.picker label { font-size: .875rem; color: var(--text-secondary); font-weight: 600; }
+.picker select {
+  font: inherit; font-size: .95rem; font-family: var(--font-metric);
+  color: var(--text-primary); background: var(--raised);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  padding: 9px 12px; min-width: 260px; cursor: pointer;
+}
+.picker select:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+.picker select:hover { border-color: var(--secondary); }
+
+.assets { list-style: none; margin: 20px 0 0; padding: 0; }
+.assets li {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 12px 14px; border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg); background: var(--card); margin-bottom: 8px;
+}
+.assets .fname { font-family: var(--font-metric); font-size: .85rem; word-break: break-all; }
+.assets .fsize { color: var(--text-muted); font-family: var(--font-metric); font-size: .8rem; margin-left: auto; }
+
+.notes {
+  margin-top: 20px; padding: 16px 18px; background: var(--card);
+  border: 1px solid var(--border-subtle); border-radius: var(--r-lg);
+  color: var(--text-secondary); font-size: .9rem; white-space: pre-wrap;
+  max-height: 340px; overflow: auto;
+}
+.state { color: var(--text-muted); font-size: .9rem; margin-top: 20px; }
+
+table.req { width: 100%; border-collapse: collapse; margin-top: 26px; font-size: .9rem; }
+table.req th, table.req td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+table.req th { color: var(--text-secondary); font-weight: 600; width: 34%; }
+table.req td { color: var(--text-secondary); }
+</style>
+</head>
+
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="img/logo.png" alt=""><span class="name">SINDAL</span></a>
+    <nav>
+      <a href="index.html#pourquoi">Pourquoi</a>
+      <a href="index.html#ecouter">Écouter</a>
+      <a href="index.html#demo">Démo</a>
+      <a href="index.html#sons">Sons</a>
+      <a href="telecharger.html" aria-current="page">Télécharger</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Télécharger</p>
+    <h1>Installez Sindal</h1>
+    <p class="intro" id="latest-line">Recherche de la dernière version…</p>
+  </div>
+</div>
+
+<!-- ══ DERNIÈRE VERSION ══ -->
+<section style="border-top:0; padding-top:0">
+  <div class="wrap">
+    <div class="dl-grid">
+      <div class="dl">
+        <h3>Windows</h3>
+        <p class="meta" id="meta-win">Windows 10 ou 11 · 64 bits</p>
+        <ul>
+          <li>Aucun prérequis : le runtime voyage avec l'application</li>
+          <li>Aucune élévation administrateur — installation dans votre dossier utilisateur</li>
+          <li>Mise à jour automatique</li>
+        </ul>
+        <a class="btn btn-primary" id="dl-win" href="#versions">Télécharger le programme d'installation</a>
+      </div>
+
+      <div class="dl">
+        <h3>macOS</h3>
+        <p class="meta" id="meta-mac">macOS Apple Silicon (arm64)</p>
+        <ul>
+          <li>Paquet <code>.pkg</code>, installation dans <code>/Applications</code></li>
+          <li>Application non signée : premier lancement par clic droit → Ouvrir</li>
+          <li>Pas de mise à jour automatique sur cette plateforme</li>
+        </ul>
+        <a class="btn btn-secondary" id="dl-mac" href="#versions">Télécharger le paquet</a>
+      </div>
+    </div>
+
+    <p class="notice">
+      <strong>macOS.</strong> Le paquet n'est ni signé ni notarié. Au premier lancement, macOS refusera de
+      l'ouvrir par un double-clic : faites un clic droit sur l'application, puis « Ouvrir », et confirmez.
+      Les lancements suivants sont normaux.
+    </p>
+  </div>
+</section>
+
+<!-- ══ CHOISIR UNE VERSION ══ -->
+<section id="versions">
+  <div class="wrap">
+    <p class="eyebrow">Archives</p>
+    <h2>Choisir une version</h2>
+    <p class="intro">
+      Toutes les versions publiées restent disponibles. Utile pour revenir en arrière si une version vous
+      pose problème — ou pour installer une version précise sur un poste donné.
+    </p>
+
+    <div class="picker">
+      <div class="row">
+        <label for="version-select">Version</label>
+        <select id="version-select" disabled>
+          <option>Chargement…</option>
+        </select>
+        <span id="version-date" style="color:var(--text-muted); font-size:.85rem"></span>
+      </div>
+
+      <ul class="assets" id="asset-list"></ul>
+      <div class="notes" id="release-notes" hidden></div>
+      <p class="state" id="picker-state">Interrogation de GitHub…</p>
+    </div>
+
+    <p class="info-box">
+      Sur Windows, installer une version plus ancienne par-dessus une récente n'est pas prévu : désinstallez
+      d'abord Sindal depuis <em>Paramètres → Applications</em>. Vos morceaux enregistrés ne sont pas touchés,
+      ils vivent hors du dossier d'installation. En revanche la désinstallation emporte favoris, langue et
+      journaux, qui partagent le dossier de l'application.
+    </p>
+  </div>
+</section>
+
+<!-- ══ CONFIGURATION ══ -->
+<section id="config">
+  <div class="wrap">
+    <p class="eyebrow">Configuration</p>
+    <h2>Ce qu'il vous faut</h2>
+
+    <table class="req">
+      <tr><th>Windows</th><td>Windows 10 ou 11, 64 bits (x64). Aucun runtime .NET à installer : il est inclus dans le paquet.</td></tr>
+      <tr><th>macOS</th><td>Apple Silicon (arm64). Les Mac Intel ne sont pas couverts par le paquet publié.</td></tr>
+      <tr><th>Espace disque</th><td>Environ 250 Mo, dont 32 Mo pour la banque de sons incluse.</td></tr>
+      <tr><th>Connexion</th><td>Aucune. L'application fonctionne entièrement hors ligne ; seule la recherche
+          de mise à jour, sur Windows, contacte le réseau.</td></tr>
+      <tr><th>Carte son</th><td>N'importe laquelle. Aucun synthétiseur MIDI externe n'est nécessaire : la
+          synthèse est logicielle et embarquée.</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Sindal</h4>
+        <p style="margin:0">Générateur de musique algorithmique pour Windows et macOS.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="legal.html">Mentions légales</a></li>
+          <li><a href="legal.html#tiers">Licences tierces</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Éditeur</h4>
+        <ul>
+          <li>Sindal</li>
+          <li><a href="mailto:yannick045@hotmail.fr">yannick045@hotmail.fr</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">Les pièces produites par Sindal appartiennent à leur auteur.</div>
+  </div>
+</footer>
+
+<script src="releases.js"></script>
+<script>
+(function () {
+  var select  = document.getElementById("version-select");
+  var list    = document.getElementById("asset-list");
+  var notes   = document.getElementById("release-notes");
+  var state   = document.getElementById("picker-state");
+  var dateOut = document.getElementById("version-date");
+
+  /* Repli commun à toutes les pannes de l'API : la page des releases GitHub
+     reste consultable, et c'est le seul lien qu'on puisse garantir. */
+  function offline(msg) {
+    state.innerHTML = msg + ' <a href="' + SindalReleases.webUrl +
+      '">Ouvrir la liste des versions sur GitHub</a>.';
+    select.innerHTML = "<option>Indisponible</option>";
+  }
+
+  function assetRow(a) {
+    var li = document.createElement("li");
+
+    var name = document.createElement("span");
+    name.className = "fname";
+    name.textContent = a.name;
+
+    var size = document.createElement("span");
+    size.className = "fsize";
+    size.textContent = SindalReleases.size(a.size);
+
+    var btn = document.createElement("a");
+    btn.className = "btn btn-secondary btn-sm";
+    btn.href = a.browser_download_url;
+    btn.textContent = "Télécharger";
+
+    li.appendChild(name); li.appendChild(size); li.appendChild(btn);
+    return li;
+  }
+
+  function show(rel) {
+    list.innerHTML = "";
+    dateOut.textContent = SindalReleases.date(rel) ? "publiée le " + SindalReleases.date(rel) : "";
+
+    /* Les paquets d'abord : ce sont eux qu'on vient chercher. Le reste
+       (nupkg, index de mise à jour) suit, sans être caché — c'est ce qui
+       permet une installation hors ligne ou un diagnostic. */
+    var assets = (rel.assets || []).slice().sort(function (a, b) {
+      var pa = /setup.*\.exe$|\.pkg$/i.test(a.name) ? 0 : 1;
+      var pb = /setup.*\.exe$|\.pkg$/i.test(b.name) ? 0 : 1;
+      return pa - pb || a.name.localeCompare(b.name);
+    });
+
+    if (assets.length === 0) {
+      list.innerHTML = '<li><span class="fname">Aucun fichier joint à cette version.</span></li>';
+    } else {
+      assets.forEach(function (a) { list.appendChild(assetRow(a)); });
+    }
+
+    if (rel.body && rel.body.trim()) {
+      notes.textContent = rel.body.trim();
+      notes.hidden = false;
+    } else {
+      notes.hidden = true;
+    }
+  }
+
+  SindalReleases.fetchAll().then(function (releases) {
+    if (!releases.length) { offline("Aucune version publiée pour le moment."); return; }
+
+    state.textContent = "";
+    select.disabled = false;
+    select.innerHTML = "";
+
+    releases.forEach(function (rel, i) {
+      var opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = "Sindal " + (SindalReleases.version(rel) || rel.tag_name) +
+                        (i === 0 ? "  —  dernière" : "") +
+                        (rel.prerelease ? "  (préversion)" : "");
+      select.appendChild(opt);
+    });
+
+    select.addEventListener("change", function () { show(releases[+select.value]); });
+    show(releases[0]);
+
+    /* Cartes du haut : toujours la DERNIÈRE version, quoi que le sélecteur
+       affiche ensuite — c'est celle qu'on recommande d'installer. */
+    var latest = releases[0];
+    var v = SindalReleases.version(latest);
+    document.getElementById("latest-line").textContent =
+      "Dernière version : " + v +
+      (SindalReleases.date(latest) ? ", publiée le " + SindalReleases.date(latest) : "") + ".";
+
+    var win = SindalReleases.windowsAsset(latest);
+    var mac = SindalReleases.macAsset(latest);
+
+    var winBtn = document.getElementById("dl-win");
+    if (win) {
+      winBtn.href = win.browser_download_url;
+      document.getElementById("meta-win").textContent =
+        "Windows 10 ou 11 · 64 bits · " + SindalReleases.size(win.size);
+    } else {
+      winBtn.setAttribute("aria-disabled", "true");
+      winBtn.textContent = "Aucun paquet Windows pour cette version";
+    }
+
+    var macBtn = document.getElementById("dl-mac");
+    if (mac) {
+      macBtn.href = mac.browser_download_url;
+      document.getElementById("meta-mac").textContent =
+        "macOS Apple Silicon (arm64) · " + SindalReleases.size(mac.size);
+    } else {
+      macBtn.setAttribute("aria-disabled", "true");
+      macBtn.textContent = "Aucun paquet macOS pour cette version";
+    }
+  }).catch(function () {
+    document.getElementById("latest-line").textContent =
+      "Impossible de joindre GitHub pour lister les versions.";
+    document.getElementById("dl-win").href = SindalReleases.latestUrl;
+    document.getElementById("dl-mac").href = SindalReleases.latestUrl;
+    offline("La liste des versions n'a pas pu être chargée.");
+  });
+})();
+</script>
+
+</body>
+</html>
