@@ -100,6 +100,7 @@ function buildPage(page) {
     home: page.out.endsWith("index.html") ? "" : "index.html",
     altHref: page.rel + page.alt.replace(/^en\//, isEn ? "" : "en/"),
     curDownload: page.current === "download" ? ' aria-current="page"' : "",
+    curPricing: page.current === "pricing" ? ' aria-current="page"' : "",
 
     publisher: data.publisher,
     email: data.email,

@@ -103,6 +103,16 @@
       "description": "Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication."
     },
     {
+      "src": "fr/offres.html",
+      "out": "offres.html",
+      "lang": "fr",
+      "alt": "en/offers.html",
+      "rel": "",
+      "current": "pricing",
+      "title": "Offres — Sindal",
+      "description": "Les offres Sindal : Gratuit sans limite de création, Premium pour l'export complet. Bêta en cours — seule l'offre Gratuite est disponible aujourd'hui."
+    },
+    {
       "src": "fr/legal.html",
       "out": "legal.html",
       "lang": "fr",
@@ -134,6 +144,16 @@
       "current": "download",
       "title": "Download Sindal",
       "description": "Download Sindal for Windows or macOS. Every published version, with its release notes."
+    },
+    {
+      "src": "en/offers.html",
+      "out": "en/offers.html",
+      "lang": "en",
+      "alt": "offres.html",
+      "rel": "../",
+      "current": "pricing",
+      "title": "Offers — Sindal",
+      "description": "Sindal's offers: unlimited Free creation, Premium for full export. Beta in progress — only the Free offer is available today."
     },
     {
       "src": "en/legal.html",
