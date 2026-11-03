@@ -32,6 +32,7 @@
       <a href="#ecouter">Écouter</a>
       <a href="#demo">Démo</a>
       <a href="#sons">Sons</a>
+      <a href="#aide">Aide</a>
       <a href="offres.html">Offres</a>
       <a href="telecharger.html">Télécharger</a>
     </nav>
@@ -146,18 +147,18 @@
       </article>
 
       <article class="track" data-reveal>
-        <h3>Pyramide<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="audio/pyramide.mp3"></audio>
+        <h3>Waves<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/waves.m4a"></audio>
       </article>
 
       <article class="track" data-reveal>
-        <h3>Liberté<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="audio/liberte.mp3"></audio>
+        <h3>Healed Heart<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/healed-heart.m4a"></audio>
       </article>
 
       <article class="track" data-reveal>
-        <h3>Grandir<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="audio/grandir.mp3"></audio>
+        <h3>Life Cycle<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/life-cycle.m4a"></audio>
       </article>
     </div>
   </div>
@@ -248,6 +249,88 @@
       Une banque <code>.sfz</code> ne décrit qu'un seul instrument : le sélecteur d'instrument se grise alors,
       et l'application explique pourquoi. C'est voulu — la banque <em>est</em> l'instrument.
     </p>
+  </div>
+</section>
+
+<!-- ══ AIDE / Q&R ══ -->
+<section id="aide">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow" data-reveal>Aide</p>
+    <h2 data-reveal>Questions fréquentes</h2>
+    <p class="intro" data-reveal>
+      Un problème de son, un instrument qui ne change pas ? Les réponses aux cas les plus courants.
+    </p>
+
+    <div class="faq" data-reveal>
+      <details>
+        <summary>La qualité du son est médiocre : comment l'améliorer ?</summary>
+        <div class="answer">
+          <p>Le timbre vient de la banque de sons active. Celle livrée (GeneralUser GS) est volontairement
+             polyvalente ; une banque mieux échantillonnée donne un rendu nettement plus réaliste.</p>
+          <ol>
+            <li>Téléchargez une SoundFont <code>.sf2</code> ou une banque <code>.sfz</code> adaptée à
+                l'instrument voulu (un piano échantillonné, par exemple).</li>
+            <li>Dans l'onglet <strong>Paramètres</strong>, choisissez <em>Parcourir une banque .sf2 ou .sfz</em>.</li>
+            <li>Réécoutez : la banque est mémorisée et rechargée au démarrage suivant, et le WAV exporté
+                utilise la même.</li>
+          </ol>
+          <p>Pour revenir au son d'origine : <em>Rétablir la banque par défaut</em>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Comment changer d'instrument ?</summary>
+        <div class="answer">
+          <p>Dans l'onglet <strong>Paramètres</strong>, ouvrez la liste <em>Instrument</em> (piano, clavecin,
+             harpe, cordes, flûte…). Le changement est immédiat : la pièce n'est pas recomposée, seul le
+             timbre change.</p>
+          <p>La liste est grisée avec une banque <code>.sfz</code> : elle ne contient qu'un seul instrument.
+             Chargez une SoundFont <code>.sf2</code> pour retrouver le choix.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Je n'entends rien : « Aucune sortie audio »</summary>
+        <div class="answer">
+          <p>Aucune banque de sons n'est chargée. Chargez un fichier <code>.sf2</code> ou <code>.sfz</code> depuis
+             l'onglet <strong>Paramètres</strong>, ou utilisez <em>Rétablir la banque par défaut</em>. Vérifiez
+             aussi la sortie audio de votre système et le volume de l'application.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>« Instrument absent de cette SoundFont — son muet »</summary>
+        <div class="answer">
+          <p>La SoundFont chargée ne contient pas l'instrument choisi. Sélectionnez-en un autre dans la liste
+             <em>Instrument</em>, ou revenez à la banque par défaut, qui couvre les 128 instruments General MIDI.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Ma banque .sfz « ne produit aucun son »</summary>
+        <div class="answer">
+          <p>Le fichier <code>.sfz</code> est lu, mais les échantillons (<code>.wav</code>, <code>.flac</code>) qu'il
+             référence sont introuvables. Gardez-les dans le dossier de la banque, avec l'arborescence d'origine :
+             les chemins absolus, ou qui sortent du dossier de la banque, sont refusés par sécurité.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mon export n'a pas de fichier WAV</summary>
+        <div class="answer">
+          <p>Le WAV est rendu par la banque de sons : sans banque chargée, seuls les autres fichiers sont
+             écrits. Chargez une banque <code>.sf2</code> ou <code>.sfz</code>, puis sauvegardez de nouveau.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Peut-on donner un instrument différent à la basse ?</summary>
+        <div class="answer">
+          <p>Oui, avec l'offre Pro : case <em>Banque pour la basse</em> dans l'onglet <strong>Paramètres</strong>.
+             Voir <a href="offres.html">les offres</a>.</p>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 

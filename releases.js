@@ -71,8 +71,30 @@ var SindalReleases = (function () {
     });
   }
 
+  /* Comparaison numérique des composantes (« 1.10.0 » > « 1.9.0 »), jamais
+     alphabétique. */
+  function versionParts(rel) {
+    return version(rel).split(".").map(function (n) { return parseInt(n, 10) || 0; });
+  }
+  function isNewer(a, b) {
+    var pa = versionParts(a), pb = versionParts(b);
+    for (var i = 0; i < Math.max(pa.length, pb.length); i++) {
+      var diff = (pa[i] || 0) - (pb[i] || 0);
+      if (diff !== 0) return diff > 0;
+    }
+    return false;
+  }
+
+  /* La plus HAUTE version publiée, pas `/releases/latest` : celui-ci rend la
+     release publiée en dernier, donc un correctif 1.x sorti après la 2.0
+     ferait proposer l'ancienne majeure en téléchargement principal. Les
+     préversions sont écartées (non destinées au public). */
   function fetchLatest() {
-    return fetchJson(API + "/latest");
+    return fetchAll().then(function (list) {
+      var stable = list.filter(function (rel) { return !rel.prerelease; });
+      if (!stable.length) return Promise.reject("no-release");
+      return stable.reduce(function (best, rel) { return isNewer(rel, best) ? rel : best; });
+    });
   }
 
   return {
