@@ -12,8 +12,8 @@
     "url": "https://github.com",
     "shortName": "GitHub, Inc."
   },
-  "taglineFr": "Générateur de musique algorithmique pour Windows et macOS.",
-  "taglineEn": "Algorithmic music generator for Windows and macOS.",
+  "taglineFr": "Générateur de musique pour piano, pour Windows et macOS.",
+  "taglineEn": "Piano music generator for Windows and macOS.",
   "thirdParty": [
     {
       "name": "DryWetMidi",
@@ -87,10 +87,11 @@
       "alt": "en/index.html",
       "rel": "",
       "current": "",
-      "title": "Sindal — Générateur de musique algorithmique",
-      "description": "Sindal compose de la musique originale sur votre machine : 9 thèmes, retouche mesure par mesure, export MIDI, WAV et MusicXML. Hors ligne, sans compte.",
-      "ogTitle": "Sindal — Générateur de musique algorithmique",
-      "ogDescription": "Une pièce originale en un clic. Puis la vôtre, mesure par mesure."
+      "title": "Sindal — Générateur de musique pour piano, gratuit et hors ligne",
+      "description": "Sindal compose de la musique pour piano sur votre ordinateur : 10 thèmes, retouche mesure par mesure, export MIDI, WAV et MusicXML. Gratuit, sans compte.",
+      "ogTitle": "Sindal — Générateur de musique pour piano",
+      "ogDescription": "Une pièce originale en un clic. Puis la vôtre, mesure par mesure.",
+      "jsonld": "app"
     },
     {
       "src": "fr/telecharger.html",
@@ -99,8 +100,8 @@
       "alt": "en/download.html",
       "rel": "",
       "current": "download",
-      "title": "Télécharger Sindal",
-      "description": "Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication."
+      "title": "Télécharger Sindal pour Windows et macOS",
+      "description": "Téléchargez Sindal, gratuit, pour Windows 10/11 ou macOS Apple Silicon. Toutes les versions et leurs notes de publication."
     },
     {
       "src": "fr/offres.html",
@@ -109,8 +110,8 @@
       "alt": "en/offers.html",
       "rel": "",
       "current": "pricing",
-      "title": "Offres — Sindal",
-      "description": "Les offres Sindal : Gratuit sans limite de création, Premium pour l'export complet. Bêta en cours — seule l'offre Gratuite est disponible aujourd'hui."
+      "title": "Offres et tarifs — Sindal",
+      "description": "Sindal est gratuit jusqu'à 12 mesures avec export MIDI. Premium (achat unique, bientôt) ajoute pièces plus longues, WAV, MusicXML et partition PNG."
     },
     {
       "src": "fr/legal.html",
@@ -121,7 +122,7 @@
       "current": "",
       "robots": "index, follow",
       "title": "Mentions légales — Sindal",
-      "description": "Mentions légales de Sindal : éditeur, hébergeur, données personnelles, contrat de licence utilisateur final et licences des composants tiers."
+      "description": "Mentions légales de Sindal : éditeur, hébergeur, données personnelles, licence utilisateur et licences des composants tiers."
     },
     {
       "src": "en/index.html",
@@ -130,10 +131,11 @@
       "alt": "index.html",
       "rel": "../",
       "current": "",
-      "title": "Sindal — Algorithmic music generator",
-      "description": "Sindal composes original music on your own machine: 9 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Offline, no account.",
-      "ogTitle": "Sindal — Algorithmic music generator",
-      "ogDescription": "An original piece in one click. Then yours, bar by bar."
+      "title": "Sindal — Free offline piano music generator",
+      "description": "Sindal composes piano music on your computer: 10 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Free, offline, no account.",
+      "ogTitle": "Sindal — Piano music generator",
+      "ogDescription": "An original piece in one click. Then yours, bar by bar.",
+      "jsonld": "app"
     },
     {
       "src": "en/download.html",
@@ -142,8 +144,8 @@
       "alt": "telecharger.html",
       "rel": "../",
       "current": "download",
-      "title": "Download Sindal",
-      "description": "Download Sindal for Windows or macOS. Every published version, with its release notes."
+      "title": "Download Sindal for Windows and macOS",
+      "description": "Download Sindal, free, for Windows 10/11 or macOS on Apple Silicon. Every version, with release notes."
     },
     {
       "src": "en/offers.html",
@@ -152,8 +154,8 @@
       "alt": "offres.html",
       "rel": "../",
       "current": "pricing",
-      "title": "Offers — Sindal",
-      "description": "Sindal's offers: unlimited Free creation, Premium for full export. Beta in progress — only the Free offer is available today."
+      "title": "Offers and pricing — Sindal",
+      "description": "Sindal is free up to 12 bars with MIDI export. Premium (one-time purchase, coming soon) adds longer pieces, WAV, MusicXML and PNG score."
     },
     {
       "src": "en/legal.html",
@@ -164,7 +166,8 @@
       "current": "",
       "robots": "index, follow",
       "title": "Legal notice — Sindal",
-      "description": "Sindal legal notice: publisher, hosting, personal data, end user licence agreement and third-party licences."
+      "description": "Sindal legal notice: publisher, hosting, personal data, user licence and third-party licences."
     }
-  ]
+  ],
+  "ogImage": "img/logo.png"
 }

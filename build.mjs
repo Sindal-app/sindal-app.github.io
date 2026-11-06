@@ -72,11 +72,35 @@ function thirdPartyShort(lang) {
     `\n          <li>${names.join(", ")} — ${lic}</li>`).join("") + "\n        ";
 }
 
+/* URL publique d'une page. Les accueils sont servis à la racine de leur
+   dossier (« /» et « /en/ ») : canonical, hreflang et sitemap doivent tous
+   nommer la MÊME adresse, sinon les moteurs voient deux pages en doublon. */
+const urlOf = (out) => data.baseUrl + out.replace(/index.html$/, "");
+
+/* Données structurées de l'accueil : ce que les moteurs lisent pour afficher
+   Sindal comme un logiciel (prix, systèmes) plutôt que comme une page. */
+function softwareJsonLd(page, lang) {
+  const isEn = lang === "en";
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: data.publisher,
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Windows 10, Windows 11, macOS",
+    description: page.description,
+    inLanguage: lang,
+    url: urlOf(page.out),
+    image: data.baseUrl + data.ogImage,
+    downloadUrl: urlOf(isEn ? "en/download.html" : "telecharger.html"),
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+  });
+}
+
 /* ── Gabarit de page ─────────────────────────────────────────────── */
 
 const BANNER = (src) => `<!--
   ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/${src} · fragments : src/partials/ · données : src/data.json
+  Source : src/pages/${src} · fragments : src/partials/ · données : src/data.json
   Régénérer : node build.mjs
 -->
 `;
@@ -129,20 +153,33 @@ function buildPage(page) {
   const frOut = isEn ? page.alt : page.out;
   const enOut = isEn ? page.out : page.alt;
 
+  const canonical = urlOf(page.out);
+  const ogImage = data.baseUrl + data.ogImage;
+  const ogTitle = page.ogTitle || page.title;
+  const ogDescription = page.ogDescription || page.description;
+
   const head = [
     `<meta charset="utf-8">`,
     `<meta name="viewport" content="width=device-width, initial-scale=1">`,
     `<title>${page.title}</title>`,
     `<meta name="description" content="${page.description}">`,
     page.robots ? `<meta name="robots" content="${page.robots}">` : null,
-    page.ogTitle ? `<meta property="og:title" content="${page.ogTitle}">` : null,
-    page.ogDescription ? `<meta property="og:description" content="${page.ogDescription}">` : null,
-    page.ogTitle ? `<meta property="og:type" content="website">` : null,
+    `<link rel="canonical" href="${canonical}">`,
+    `<meta name="theme-color" content="#0B0B14">`,
+    `<meta property="og:site_name" content="${data.publisher}">`,
+    `<meta property="og:title" content="${ogTitle}">`,
+    `<meta property="og:description" content="${ogDescription}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:url" content="${canonical}">`,
+    `<meta property="og:locale" content="${isEn ? "en_US" : "fr_FR"}">`,
+    `<meta property="og:image" content="${ogImage}">`,
+    `<meta name="twitter:card" content="summary">`,
     `<link rel="icon" href="${page.rel}img/logo.png" sizes="any">`,
-    `<link rel="alternate" hreflang="fr" href="${data.baseUrl}${frOut}">`,
-    `<link rel="alternate" hreflang="en" href="${data.baseUrl}${enOut}">`,
-    `<link rel="alternate" hreflang="x-default" href="${data.baseUrl}${frOut}">`,
+    `<link rel="alternate" hreflang="fr" href="${urlOf(frOut)}">`,
+    `<link rel="alternate" hreflang="en" href="${urlOf(enOut)}">`,
+    `<link rel="alternate" hreflang="x-default" href="${urlOf(frOut)}">`,
     `<link rel="stylesheet" href="${page.rel}style.css">`,
+    page.jsonld ? `<script type="application/ld+json">${softwareJsonLd(page, lang)}</script>` : null,
   ].filter(Boolean).join("\n");
 
   const html = `${BANNER(page.src)}<!DOCTYPE html>
@@ -176,6 +213,35 @@ for (const page of data.pages) {
   const lines = buildPage(page);
   console.log(`  ${page.out.padEnd(22)} ${String(lines).padStart(4)} lignes`);
 }
+
+/* sitemap.xml : une entrée par page, avec ses deux langues. Généré ici pour
+   ne jamais diverger de la liste des pages de data.json. */
+const today = new Date().toISOString().slice(0, 10);
+const entries = data.pages.map((page) => {
+  const isEn = page.lang === "en";
+  const frOut = isEn ? page.alt : page.out;
+  const enOut = isEn ? page.out : page.alt;
+  return `  <url>
+    <loc>${urlOf(page.out)}</loc>
+    <lastmod>${today}</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="${urlOf(frOut)}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${urlOf(enOut)}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(frOut)}"/>
+  </url>`;
+}).join("\n");
+fs.writeFileSync(path.join(ROOT, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries}
+</urlset>
+`);
+fs.writeFileSync(path.join(ROOT, "robots.txt"),
+  `User-agent: *
+Allow: /
+
+Sitemap: ${data.baseUrl}sitemap.xml
+`);
+console.log("  sitemap.xml, robots.txt");
 
 if (missing.size) {
   console.error(`\nJetons non résolus : ${[...missing].join(", ")}`);

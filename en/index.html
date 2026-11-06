@@ -1,6 +1,6 @@
 <!--
   ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/en/index.html · fragments : src/partials/ · données : src/data.json
+  Source : src/pages/en/index.html · fragments : src/partials/ · données : src/data.json
   Régénérer : node build.mjs
 -->
 <!DOCTYPE html>
@@ -8,16 +8,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sindal — Algorithmic music generator</title>
-<meta name="description" content="Sindal composes original music on your own machine: 9 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Offline, no account.">
-<meta property="og:title" content="Sindal — Algorithmic music generator">
+<title>Sindal — Free offline piano music generator</title>
+<meta name="description" content="Sindal composes piano music on your computer: 10 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Free, offline, no account.">
+<link rel="canonical" href="https://sindal-app.github.io/en/">
+<meta name="theme-color" content="#0B0B14">
+<meta property="og:site_name" content="Sindal">
+<meta property="og:title" content="Sindal — Piano music generator">
 <meta property="og:description" content="An original piece in one click. Then yours, bar by bar.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sindal-app.github.io/en/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sindal-app.github.io/img/logo.png">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="../img/logo.png" sizes="any">
-<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/index.html">
-<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/index.html">
-<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/index.html">
+<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/">
+<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/">
 <link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sindal","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11, macOS","description":"Sindal composes piano music on your computer: 10 moods, bar-by-bar editing, MIDI, WAV and MusicXML export. Free, offline, no account.","inLanguage":"en","url":"https://sindal-app.github.io/en/","image":"https://sindal-app.github.io/img/logo.png","downloadUrl":"https://sindal-app.github.io/en/download.html","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
 
 
 </head>
@@ -47,11 +55,11 @@
 <!-- ══ HERO ══ -->
 <div class="hero">
   <div class="wrap hero-anim">
-    <p class="eyebrow">Algorithmic music generator</p>
+    <p class="eyebrow">Piano music generator</p>
     <h1>An original piece in one click.<br><span class="grad">Then yours, bar by bar.</span></h1>
     <p class="lead">
-      Sindal composes on your own machine. Pick a mood, a key, a tempo, then listen, rework whatever
-      falls flat, and export to MIDI, WAV or MusicXML. The music it produces belongs to you.
+      Pick a mood, a key, a tempo. Sindal writes the score, you listen, you rework whatever falls flat.
+      Everything happens on your own computer.
     </p>
     <div class="cta">
       <a class="btn btn-primary" href="download.html">
@@ -60,7 +68,7 @@
       <a class="btn btn-secondary" href="#listen">Hear some examples</a>
     </div>
     <p class="reassure">
-      <span>Free</span><span>No account</span><span>Works offline</span><span>Nothing to install first</span>
+      <span>Free</span><span>No account</span><span>Works offline</span><span>Windows and macOS</span>
     </p>
   </div>
 </div>
@@ -69,48 +77,45 @@
 <section id="why">
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Why Sindal</p>
-    <h2 data-reveal>A music theory engine, not a black box</h2>
+    <h2 data-reveal>Rules of composition, not a black box</h2>
     <p class="intro" data-reveal>
-      Sindal has learned nothing from existing music. It applies the rules of written composition (scales,
-      degrees, voice leading, cadences) to the settings you choose. What comes out resembles no one else's
-      work, and raises no question about training data rights.
+      Sindal has learned nothing from existing music. It writes the way you learn to at music school:
+      scales, chords, voice leading, cadences. What comes out copies no one, and no existing work was used
+      to train it.
     </p>
 
     <div class="grid grid-3" data-stagger>
       <article class="card" data-reveal>
         <div class="ico">🎼</div>
         <h3>The music is yours</h3>
-        <p>No subscription, no watermark, no clause about what you do with it. Files land on your own disk,
-           in open formats.</p>
+        <p>No subscription, no clause about what you do with it. Files land on your own disk, in open
+           formats.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">🔒</div>
         <h3>Nothing leaves your machine</h3>
-        <p>No account, no server, no telemetry. Sindal runs entirely offline, sound synthesis included.</p>
+        <p>No account, no server, no telemetry. Even the sound is synthesised at home.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">✍️</div>
         <h3>You stay in control</h3>
-        <p>A bar you dislike? Generate three variations, hear them in context, graft in the one you prefer.
-           Or open the editor and move notes one by one.</p>
+        <p>Don't like a bar? Sindal offers three variations and you pick. Or move the notes one by one.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">🎹</div>
         <h3>Sound is included</h3>
-        <p>A complete General MIDI bank ships with the application: Sindal plays and exports audio from the
-           moment it is installed. <a href="#sound">More about sound</a>.</p>
+        <p>A General MIDI bank ships with the app, so it sounds right after install. You can load your own
+           later. <a href="#sound">Details</a>.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">📤</div>
         <h3>Open formats</h3>
-        <p>MIDI for your sequencer, WAV for editing, MusicXML for MuseScore or Dorico, PNG for a printable
-           score.</p>
+        <p>MIDI for your sequencer, WAV for editing, MusicXML for MuseScore or Dorico, PNG for the score.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">⚡</div>
-        <h3>Frictionless install</h3>
-        <p>No runtime to install beforehand, no administrator prompt. The application lands in your user
-           folder and updates itself.</p>
+        <h3>Easy install</h3>
+        <p>Nothing to install first, no administrator prompt. On Windows, the app updates itself.</p>
       </article>
     </div>
   </div>
@@ -120,16 +125,21 @@
 <section id="listen">
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Listen</p>
-    <h2 data-reveal>Six pieces made with Sindal</h2>
+    <h2 data-reveal>Seven pieces made with Sindal</h2>
     <p class="intro" data-reveal>
-      Generated by the application, then reworked inside it: bars regenerated, notes moved, structure
-      adjusted. This is what the tool allows, from first draft to the version worth keeping.
+      Each one came out of the app, then was reworked inside it: bars regenerated, notes moved, structure
+      adjusted.
     </p>
 
     <div class="grid grid-2" data-stagger>
       <article class="track" data-reveal>
-        <h3>L'aventure commence<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="../audio/l-aventure-commence.mp3"></audio>
+        <h3>Enchanted<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/enchanted.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Everest<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="../audio/everest.m4a"></audio>
       </article>
 
       <article class="track" data-reveal>
@@ -168,39 +178,38 @@
 
     <figure class="shot" data-reveal>
       <img src="../img/app-creer.png" alt="Sindal's Create tab: mood, key, instrument, tempo, bars, refrain, and the rhythm sliders." loading="lazy">
-      <figcaption>The Create tab. Every slider carries a relative weight, and shows the share it actually takes in the draw.</figcaption>
+      <figcaption>The Create tab: each slider shows the share it really takes in the draw.</figcaption>
     </figure>
 
     <div class="steps">
       <div class="step" data-reveal>
         <div>
           <h3>Set</h3>
-          <p>Nine moods (happy, sad, epic, celtic, oriental, neoclassical and more), twelve keys, the tempo,
-             the number of bars. Then, if you want to go further: chord density, harmonic colours, the rhythm
-             profile, rests, the dynamic arc, the register, the refrain.</p>
+          <p>Ten moods (happy, sad, epic, celtic, oriental, classical…), twelve keys, the tempo, the length,
+             and three metres: 4/4, a waltz in 3/4 or a lilting 6/8. To go further, about twenty sliders:
+             chords, rhythm, rests, dynamics, refrain. Or let the guided mode ask you a few questions.</p>
         </div>
       </div>
       <div class="step" data-reveal>
         <div>
           <h3>Generate</h3>
-          <p>The engine writes a melody, a left hand and a bass line that agree with each other: chords are
-             diatonic by construction, the left hand never holds more than three notes, and the piece ends on
-             a real cadence with a ritardando.</p>
+          <p>Melody, left hand and bass are written together. No wrong notes: everything stays in the scale,
+             and the piece ends on a real cadence.</p>
         </div>
       </div>
       <div class="step" data-reveal>
         <div>
           <h3>Listen, then rework</h3>
-          <p>Select the bars that miss. Sindal offers three variations, playable in context, and grafts in the
-             one you pick. You can also insert or remove a bar, copy one bar onto another, or open the editor
-             and move notes individually.</p>
+          <p>Select the bars that miss: three variations to hear in context, and you keep the best. You can
+             also add, remove or copy bars, or open the note editor. An existing MIDI file can serve as a
+             starting point (Premium).</p>
         </div>
       </div>
       <div class="step" data-reveal>
         <div>
           <h3>Save</h3>
           <p>MIDI, WAV, a PNG score, MusicXML, and a <code>.sindal</code> project that reopens the piece
-             exactly as you left it.</p>
+             exactly as you left it. <a href="offers.html">What is free, what is not</a>.</p>
         </div>
       </div>
     </div>
@@ -211,38 +220,35 @@
 <section id="sound">
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Sound</p>
-    <h2 data-reveal>A sound bank included, and yours on top</h2>
+    <h2 data-reveal>A bank included, yours on top</h2>
     <p class="intro" data-reveal>
-      A MIDI file holds no sound at all: it describes notes, and something has to play them. Sindal brings
-      its own instrument, so the application sounds from the moment it is installed. No configuration, no
-      external synthesiser, no connection.
+      A MIDI file describes notes, not sounds: something has to play them. Sindal brings its own
+      instrument, so it sounds right away with nothing to set up.
     </p>
 
     <div class="grid grid-3" data-stagger>
       <article class="card" data-reveal>
         <div class="ico">🎛️</div>
         <h3>GeneralUser GS included</h3>
-        <p>S. Christian Collins' General MIDI SoundFont (32 MB, 128 instruments) is installed alongside the
-           application, and is enough to play and export everything you compose. Its licence allows musical
+        <p>S. Christian Collins' General MIDI SoundFont: 128 instruments, 32 MB. Its licence allows musical
            use, commercial included.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">📚</div>
         <h3>Your own banks</h3>
-        <p>Load any <code>.sf2</code> SoundFont or <code>.sfz</code> bank. A full sampled piano works, thanks
-           to lazy loading. The bank you choose is remembered and reloaded on the next launch.</p>
+        <p>Load a <code>.sf2</code> SoundFont or an <code>.sfz</code> bank, a sampled piano for instance. It
+           is remembered between launches.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">💾</div>
-        <h3>Real audio export</h3>
-        <p>Exported WAV is rendered by the active bank, not by a system synthesiser: what you hear in the
-           application is exactly what lands in the file.</p>
+        <h3>The WAV sounds like the app</h3>
+        <p>Export is rendered by the active bank: what you hear is what you get.</p>
       </article>
     </div>
 
     <p class="info-box" data-reveal>
-      An <code>.sfz</code> bank describes a single instrument, so the instrument selector greys out and the
-      application explains why. That is deliberate: the bank <em>is</em> the instrument.
+      An <code>.sfz</code> bank holds a single instrument, so the instrument picker greys out. That is
+      expected: the bank <em>is</em> the instrument.
     </p>
   </div>
 </section>
@@ -252,22 +258,18 @@
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Help</p>
     <h2 data-reveal>Frequently asked questions</h2>
-    <p class="intro" data-reveal>
-      Sound problem, instrument that won't change? Answers to the most common cases.
-    </p>
 
     <div class="faq" data-reveal>
       <details>
-        <summary>The sound quality is poor: how can I improve it?</summary>
+        <summary>The sound is poor, how can I improve it?</summary>
         <div class="answer">
-          <p>The timbre comes from the active sound bank. The bundled one (GeneralUser GS) is deliberately
-             all-round; a better-sampled bank sounds noticeably more realistic.</p>
+          <p>The timbre comes from the active bank. The bundled one is all-round; a better-sampled bank
+             sounds noticeably more real.</p>
           <ol>
-            <li>Download a <code>.sf2</code> SoundFont or a <code>.sfz</code> bank suited to the instrument you
-                want (a sampled piano, for example).</li>
-            <li>In the <strong>Settings</strong> tab, choose <em>Browse for a .sf2 or .sfz bank</em>.</li>
-            <li>Listen again: the bank is remembered and reloaded at next start, and the exported WAV uses the
-                same one.</li>
+            <li>Download a <code>.sf2</code> SoundFont or an <code>.sfz</code> bank (a sampled piano, for
+                example).</li>
+            <li>In <strong>Settings</strong>, choose <em>Browse for a .sf2 or .sfz bank</em>.</li>
+            <li>Listen again. The exported WAV will use the same one.</li>
           </ol>
           <p>To go back to the original sound: <em>Restore the default bank</em>.</p>
         </div>
@@ -276,53 +278,57 @@
       <details>
         <summary>How do I change instrument?</summary>
         <div class="answer">
-          <p>In the <strong>Settings</strong> tab, open the <em>Instrument</em> list (piano, harpsichord, harp,
-             strings, flute…). The change is immediate: the piece is not recomposed, only the timbre changes.</p>
-          <p>The list is greyed out with a <code>.sfz</code> bank: it holds a single instrument. Load a
-             <code>.sf2</code> SoundFont to get the choice back.</p>
+          <p>In <strong>Settings</strong>, the <em>Instrument</em> list. The piece isn't recomposed, only the
+             timbre changes. The list is greyed out with an <code>.sfz</code> bank; load a <code>.sf2</code>
+             to get the choice back.</p>
         </div>
       </details>
 
       <details>
         <summary>I hear nothing: "No audio output"</summary>
         <div class="answer">
-          <p>No sound bank is loaded. Load a <code>.sf2</code> or <code>.sfz</code> file from the
-             <strong>Settings</strong> tab, or use <em>Restore the default bank</em>. Also check your system's
-             audio output and the application's volume.</p>
+          <p>No bank is loaded. Load a <code>.sf2</code> or <code>.sfz</code> from <strong>Settings</strong>,
+             or use <em>Restore the default bank</em>. Also check your system's audio output and volume.</p>
         </div>
       </details>
 
       <details>
         <summary>"Instrument missing from this SoundFont — silent"</summary>
         <div class="answer">
-          <p>The loaded SoundFont doesn't contain the chosen instrument. Pick another one in the
-             <em>Instrument</em> list, or go back to the default bank, which covers all 128 General MIDI
-             instruments.</p>
+          <p>The loaded SoundFont doesn't have the chosen instrument. Pick another in the list, or go back to
+             the default bank, which covers all 128 General MIDI instruments.</p>
         </div>
       </details>
 
       <details>
-        <summary>My .sfz bank "produces no sound"</summary>
+        <summary>My .sfz bank produces no sound</summary>
         <div class="answer">
-          <p>The <code>.sfz</code> file is read, but the samples (<code>.wav</code>, <code>.flac</code>) it
-             references can't be found. Keep them in the bank's folder, with the original folder layout:
-             absolute paths, or paths leading out of the bank's folder, are refused for safety.</p>
+          <p>The file is read, but its samples (<code>.wav</code>, <code>.flac</code>) can't be found. Keep them
+             in the bank's folder with the original layout: absolute paths, or paths leading out of the
+             folder, are refused for safety.</p>
         </div>
       </details>
 
       <details>
         <summary>My export has no WAV file</summary>
         <div class="answer">
-          <p>The WAV is rendered by the sound bank: with no bank loaded, only the other files are written.
-             Load a <code>.sf2</code> or <code>.sfz</code> bank, then save again.</p>
+          <p>Audio export is part of <a href="offers.html">the Premium offer</a>. If you have it, check that a
+             bank is loaded: without one, no WAV is written.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why does my piece stop at 12 bars?</summary>
+        <div class="answer">
+          <p>That is the free offer's limit. Beyond it, generation points you to Premium. See
+             <a href="offers.html">the offers</a>.</p>
         </div>
       </details>
 
       <details>
         <summary>Can the bass use a different instrument?</summary>
         <div class="answer">
-          <p>Yes, with the Pro offer: the <em>Bass bank</em> checkbox in the <strong>Settings</strong> tab.
-             See <a href="offers.html">the offers</a>.</p>
+          <p>Yes, with Premium: the <em>Bass bank</em> checkbox in <strong>Settings</strong>.</p>
         </div>
       </details>
     </div>
@@ -350,7 +356,7 @@
     <div class="cols">
       <div>
         <h4>Sindal</h4>
-        <p style="margin:0">Algorithmic music generator for Windows and macOS.</p>
+        <p style="margin:0">Piano music generator for Windows and macOS.</p>
       </div>
       <div>
         <h4>Pages</h4>

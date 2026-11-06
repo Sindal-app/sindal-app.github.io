@@ -1,6 +1,6 @@
 <!--
   ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/fr/index.html · fragments : src/partials/ · données : src/data.json
+  Source : src/pages/fr/index.html · fragments : src/partials/ · données : src/data.json
   Régénérer : node build.mjs
 -->
 <!DOCTYPE html>
@@ -8,16 +8,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sindal — Générateur de musique algorithmique</title>
-<meta name="description" content="Sindal compose de la musique originale sur votre machine : 9 thèmes, retouche mesure par mesure, export MIDI, WAV et MusicXML. Hors ligne, sans compte.">
-<meta property="og:title" content="Sindal — Générateur de musique algorithmique">
+<title>Sindal — Générateur de musique pour piano, gratuit et hors ligne</title>
+<meta name="description" content="Sindal compose de la musique pour piano sur votre ordinateur : 10 thèmes, retouche mesure par mesure, export MIDI, WAV et MusicXML. Gratuit, sans compte.">
+<link rel="canonical" href="https://sindal-app.github.io/">
+<meta name="theme-color" content="#0B0B14">
+<meta property="og:site_name" content="Sindal">
+<meta property="og:title" content="Sindal — Générateur de musique pour piano">
 <meta property="og:description" content="Une pièce originale en un clic. Puis la vôtre, mesure par mesure.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sindal-app.github.io/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://sindal-app.github.io/img/logo.png">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="img/logo.png" sizes="any">
-<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/index.html">
-<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/index.html">
-<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/index.html">
+<link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/">
+<link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://sindal-app.github.io/">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sindal","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11, macOS","description":"Sindal compose de la musique pour piano sur votre ordinateur : 10 thèmes, retouche mesure par mesure, export MIDI, WAV et MusicXML. Gratuit, sans compte.","inLanguage":"fr","url":"https://sindal-app.github.io/","image":"https://sindal-app.github.io/img/logo.png","downloadUrl":"https://sindal-app.github.io/telecharger.html","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
 
 
 </head>
@@ -47,11 +55,11 @@
 <!-- ══ HÉROS ══ -->
 <div class="hero">
   <div class="wrap hero-anim">
-    <p class="eyebrow">Générateur de musique algorithmique</p>
+    <p class="eyebrow">Générateur de musique pour piano</p>
     <h1>Une pièce originale en un clic.<br><span class="grad">Puis la vôtre, mesure par mesure.</span></h1>
     <p class="lead">
-      Sindal compose sur votre machine. Réglez un thème, une tonique, un tempo — écoutez, retouchez ce qui
-      ne vous plaît pas, exportez en MIDI, WAV ou MusicXML. La musique produite est à vous.
+      Choisissez un thème, une tonique, un tempo. Sindal écrit la partition, vous écoutez, vous retouchez
+      ce qui ne va pas. Tout se passe sur votre ordinateur.
     </p>
     <div class="cta">
       <a class="btn btn-primary" href="telecharger.html">
@@ -60,7 +68,7 @@
       <a class="btn btn-secondary" href="#ecouter">Écouter des exemples</a>
     </div>
     <p class="reassure">
-      <span>Gratuit</span><span>Sans compte</span><span>Fonctionne hors ligne</span><span>Aucun prérequis à installer</span>
+      <span>Gratuit</span><span>Sans compte</span><span>Hors ligne</span><span>Windows et macOS</span>
     </p>
   </div>
 </div>
@@ -69,49 +77,48 @@
 <section id="pourquoi">
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Pourquoi Sindal</p>
-    <h2 data-reveal>Un moteur de théorie musicale, pas une boîte noire</h2>
+    <h2 data-reveal>Des règles d'écriture, pas une boîte noire</h2>
     <p class="intro" data-reveal>
-      Sindal n'a rien appris sur de la musique existante. Il applique des règles d'écriture — gammes, degrés,
-      conduite de voix, cadences — et compose à partir de vos réglages. Ce que vous obtenez ne ressemble à
-      l'œuvre de personne, et ne pose aucune question de droits sur des données d'entraînement.
+      Sindal n'a rien appris sur de la musique existante. Il compose comme on l'apprend au conservatoire :
+      gammes, accords, conduite des voix, cadences. Le résultat ne copie personne, et aucune œuvre n'a servi
+      à l'entraîner.
     </p>
 
     <div class="grid grid-3" data-stagger>
       <article class="card" data-reveal>
         <div class="ico">🎼</div>
         <h3>La musique est à vous</h3>
-        <p>Aucun abonnement, aucun filigrane, aucune clause sur ce que vous en faites. Les fichiers sortent
-           sur votre disque, dans des formats ouverts.</p>
+        <p>Pas d'abonnement, pas de clause sur ce que vous en faites. Les fichiers atterrissent sur votre
+           disque, dans des formats ouverts.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">🔒</div>
         <h3>Rien ne quitte votre machine</h3>
-        <p>Pas de compte, pas de serveur, pas de télémétrie. Sindal fonctionne entièrement hors ligne,
-           y compris la synthèse sonore.</p>
+        <p>Pas de compte, pas de serveur, pas de télémétrie. Même le son est synthétisé chez vous.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">✍️</div>
         <h3>Vous gardez la main</h3>
-        <p>Une mesure ne vous plaît pas ? Générez-en trois variantes, écoutez-les en contexte, greffez celle
-           que vous préférez. Ou éditez note à note.</p>
+        <p>Une mesure ne vous plaît pas ? Sindal en propose trois variantes, vous choisissez. Ou vous
+           déplacez les notes une à une.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">🎹</div>
-        <h3>Le son est inclus</h3>
-        <p>Une banque General MIDI complète est livrée avec l'application : Sindal joue et exporte du son dès
-           l'installation, sans rien ajouter. <a href="#sons">En savoir plus</a>.</p>
+        <h3>Le son est livré</h3>
+        <p>Une banque General MIDI est incluse : ça sonne dès l'installation. Vous pouvez ensuite
+           charger la vôtre. <a href="#sons">Détails</a>.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">📤</div>
         <h3>Formats ouverts</h3>
         <p>MIDI pour votre séquenceur, WAV pour le montage, MusicXML pour MuseScore ou Dorico, PNG pour la
-           partition imprimable.</p>
+           partition.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">⚡</div>
-        <h3>Installation sans friction</h3>
-        <p>Aucun runtime à poser au préalable, aucune élévation administrateur. L'application s'installe dans
-           votre dossier utilisateur et se met à jour seule.</p>
+        <h3>Installation simple</h3>
+        <p>Rien à installer avant, pas besoin d'être administrateur. Sous Windows, l'application se met
+           à jour toute seule.</p>
       </article>
     </div>
   </div>
@@ -121,19 +128,21 @@
 <section id="ecouter">
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Écouter</p>
-    <h2 data-reveal>Six morceaux faits avec Sindal</h2>
+    <h2 data-reveal>Sept morceaux faits avec Sindal</h2>
     <p class="intro" data-reveal>
-      Générés par l'application, puis retouchés dedans : mesures régénérées, notes déplacées, structure
-      ajustée. C'est ce que l'outil permet, du premier jet à la version qu'on garde.
+      Chacun est sorti de l'application, puis a été retouché dedans : mesures régénérées, notes déplacées,
+      structure ajustée.
     </p>
 
-    <!-- Titre et lecteur, rien d'autre : les réglages qui ont produit ces
-         pièces n'apprennent rien à qui découvre l'application, et six fiches
-         chargées de métadonnées noyaient ce qu'on vient faire ici — écouter. -->
     <div class="grid grid-2" data-stagger>
       <article class="track" data-reveal>
-        <h3>L'aventure commence<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
-        <audio controls preload="none" src="audio/l-aventure-commence.mp3"></audio>
+        <h3>Enchanted<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/enchanted.mp3"></audio>
+      </article>
+
+      <article class="track" data-reveal>
+        <h3>Everest<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h3>
+        <audio controls preload="none" src="audio/everest.m4a"></audio>
       </article>
 
       <article class="track" data-reveal>
@@ -171,40 +180,40 @@
     <h2 data-reveal>Quatre gestes, du réglage au fichier</h2>
 
     <figure class="shot" data-reveal>
-      <img src="img/app-creer.png" alt="L'onglet Création de Sindal : thème, tonique, instrument, tempo, mesures, refrain, et les curseurs de rythme." loading="lazy">
-      <figcaption>L'onglet Création — chaque curseur porte un poids relatif, et affiche la part réelle qu'il prend dans le tirage.</figcaption>
+      <img src="img/app-creer.png" alt="L'onglet Création de Sindal : thème, tonique, instrument, tempo, mesures, refrain et curseurs de rythme." loading="lazy">
+      <figcaption>L'onglet Création : chaque curseur dit la part qu'il prend vraiment dans le tirage.</figcaption>
     </figure>
 
     <div class="steps">
       <div class="step" data-reveal>
         <div>
           <h3>Régler</h3>
-          <p>Neuf thèmes (joyeux, triste, épique, celtique, oriental, néoclassique…), douze toniques, le tempo,
-             le nombre de mesures. Puis, si vous voulez aller plus loin : la densité d'accords, les couleurs
-             d'harmonie, le profil rythmique, les silences, l'arc dynamique, la tessiture, le refrain.</p>
+          <p>Dix thèmes (joyeux, triste, épique, celtique, oriental, classique…), douze toniques, le tempo, la
+             longueur, et trois mètres : 4/4, valse à 3/4 ou balancé à 6/8. Pour aller plus loin, une vingtaine
+             de curseurs : accords, rythme, silences, nuances, refrain. Ou laissez le mode assisté vous poser
+             quelques questions.</p>
         </div>
       </div>
       <div class="step" data-reveal>
         <div>
           <h3>Générer</h3>
-          <p>Le moteur écrit une mélodie, une main gauche et une basse cohérentes entre elles : les accords sont
-             diatoniques par construction, la main gauche ne tient jamais plus de trois notes, la pièce se termine
-             par une vraie cadence avec ralenti.</p>
+          <p>Mélodie, main gauche et basse s'écrivent ensemble. Aucune fausse note : tout reste dans la
+             gamme, et la pièce finit sur une vraie cadence.</p>
         </div>
       </div>
       <div class="step" data-reveal>
         <div>
           <h3>Écouter, puis retoucher</h3>
-          <p>Sélectionnez les mesures qui ne vont pas. Sindal en propose trois variantes, écoutables en contexte,
-             et greffe celle que vous choisissez. Vous pouvez aussi insérer ou retirer une mesure, copier une mesure
-             sur une autre, ou ouvrir l'éditeur et déplacer les notes une par une.</p>
+          <p>Sélectionnez les mesures qui ne vont pas : trois variantes à écouter en contexte, vous gardez
+             la meilleure. Vous pouvez aussi ajouter, retirer ou copier des mesures, ou ouvrir l'éditeur de
+             notes. Un fichier MIDI existant peut servir de point de départ (Premium).</p>
         </div>
       </div>
       <div class="step" data-reveal>
         <div>
           <h3>Sauvegarder</h3>
-          <p>MIDI, WAV, partition PNG, MusicXML, et un projet <code>.sindal</code> qui rouvre la pièce exactement
-             telle que vous l'avez laissée.</p>
+          <p>MIDI, WAV, partition PNG, MusicXML, et un projet <code>.sindal</code> qui rouvre la pièce
+             exactement comme vous l'avez laissée. <a href="offres.html">Ce qui est gratuit, ce qui ne l'est pas</a>.</p>
         </div>
       </div>
     </div>
@@ -215,39 +224,35 @@
 <section id="sons">
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Le son</p>
-    <h2 data-reveal>Une banque de sons livrée, et les vôtres par-dessus</h2>
+    <h2 data-reveal>Une banque livrée, les vôtres en plus</h2>
     <p class="intro" data-reveal>
-      Un fichier MIDI ne contient aucun son : il décrit des notes, il faut un instrument pour les jouer.
-      Sindal embarque le sien, pour que l'application sonne dès l'installation — sans configuration, sans
-      synthétiseur externe, sans connexion.
+      Un fichier MIDI décrit des notes, pas des sons : il faut un instrument pour les jouer. Sindal
+      embarque le sien, donc ça sonne sans rien configurer.
     </p>
 
     <div class="grid grid-3" data-stagger>
       <article class="card" data-reveal>
         <div class="ico">🎛️</div>
         <h3>GeneralUser GS incluse</h3>
-        <p>La SoundFont General MIDI de S. Christian Collins (32 Mo, 128 instruments) est installée avec
-           l'application, et suffit à jouer et exporter tout ce que vous composez. Sa licence autorise
-           l'usage musical, y compris commercial.</p>
+        <p>La SoundFont General MIDI de S. Christian Collins : 128 instruments, 32 Mo. Sa licence autorise
+           l'usage musical, commercial compris.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">📚</div>
         <h3>Vos propres banques</h3>
-        <p>Chargez n'importe quelle SoundFont <code>.sf2</code> ou une banque <code>.sfz</code> — un piano
-           échantillonné complet fonctionne, chargement paresseux à l'appui. La banque choisie est
-           mémorisée et rechargée au démarrage suivant.</p>
+        <p>Chargez une SoundFont <code>.sf2</code> ou une banque <code>.sfz</code>, un piano échantillonné par
+           exemple. Elle est retenue d'un lancement à l'autre.</p>
       </article>
       <article class="card" data-reveal>
         <div class="ico">💾</div>
-        <h3>Export audio réel</h3>
-        <p>Le WAV exporté est rendu par la banque active, pas par un synthétiseur système : ce que vous
-           entendez dans l'application est exactement ce que vous obtenez dans le fichier.</p>
+        <h3>Le WAV sonne comme l'appli</h3>
+        <p>L'export est rendu par la banque active : ce que vous entendez est ce que vous obtenez.</p>
       </article>
     </div>
 
     <p class="info-box" data-reveal>
-      Une banque <code>.sfz</code> ne décrit qu'un seul instrument : le sélecteur d'instrument se grise alors,
-      et l'application explique pourquoi. C'est voulu — la banque <em>est</em> l'instrument.
+      Une banque <code>.sfz</code> ne contient qu'un instrument : le choix d'instrument se grise alors.
+      C'est normal, la banque <em>est</em> l'instrument.
     </p>
   </div>
 </section>
@@ -257,22 +262,18 @@
   <div class="wrap" data-stagger>
     <p class="eyebrow" data-reveal>Aide</p>
     <h2 data-reveal>Questions fréquentes</h2>
-    <p class="intro" data-reveal>
-      Un problème de son, un instrument qui ne change pas ? Les réponses aux cas les plus courants.
-    </p>
 
     <div class="faq" data-reveal>
       <details>
-        <summary>La qualité du son est médiocre : comment l'améliorer ?</summary>
+        <summary>Le son est médiocre, comment l'améliorer ?</summary>
         <div class="answer">
-          <p>Le timbre vient de la banque de sons active. Celle livrée (GeneralUser GS) est volontairement
-             polyvalente ; une banque mieux échantillonnée donne un rendu nettement plus réaliste.</p>
+          <p>Le timbre vient de la banque active. Celle livrée sert à tout, une banque mieux échantillonnée
+             sonne nettement plus réel.</p>
           <ol>
-            <li>Téléchargez une SoundFont <code>.sf2</code> ou une banque <code>.sfz</code> adaptée à
-                l'instrument voulu (un piano échantillonné, par exemple).</li>
-            <li>Dans l'onglet <strong>Paramètres</strong>, choisissez <em>Parcourir une banque .sf2 ou .sfz</em>.</li>
-            <li>Réécoutez : la banque est mémorisée et rechargée au démarrage suivant, et le WAV exporté
-                utilise la même.</li>
+            <li>Téléchargez une SoundFont <code>.sf2</code> ou une banque <code>.sfz</code> (un piano
+                échantillonné, par exemple).</li>
+            <li>Dans <strong>Paramètres</strong>, choisissez <em>Parcourir une banque .sf2 ou .sfz</em>.</li>
+            <li>Réécoutez. Le WAV exporté utilisera la même.</li>
           </ol>
           <p>Pour revenir au son d'origine : <em>Rétablir la banque par défaut</em>.</p>
         </div>
@@ -281,53 +282,58 @@
       <details>
         <summary>Comment changer d'instrument ?</summary>
         <div class="answer">
-          <p>Dans l'onglet <strong>Paramètres</strong>, ouvrez la liste <em>Instrument</em> (piano, clavecin,
-             harpe, cordes, flûte…). Le changement est immédiat : la pièce n'est pas recomposée, seul le
-             timbre change.</p>
-          <p>La liste est grisée avec une banque <code>.sfz</code> : elle ne contient qu'un seul instrument.
-             Chargez une SoundFont <code>.sf2</code> pour retrouver le choix.</p>
+          <p>Dans <strong>Paramètres</strong>, liste <em>Instrument</em>. La pièce n'est pas recomposée, seul le
+             timbre change. La liste est grisée avec une banque <code>.sfz</code> ; chargez une
+             <code>.sf2</code> pour retrouver le choix.</p>
         </div>
       </details>
 
       <details>
         <summary>Je n'entends rien : « Aucune sortie audio »</summary>
         <div class="answer">
-          <p>Aucune banque de sons n'est chargée. Chargez un fichier <code>.sf2</code> ou <code>.sfz</code> depuis
-             l'onglet <strong>Paramètres</strong>, ou utilisez <em>Rétablir la banque par défaut</em>. Vérifiez
-             aussi la sortie audio de votre système et le volume de l'application.</p>
+          <p>Aucune banque n'est chargée. Chargez un <code>.sf2</code> ou un <code>.sfz</code> depuis
+             <strong>Paramètres</strong>, ou utilisez <em>Rétablir la banque par défaut</em>. Vérifiez aussi la
+             sortie audio et le volume de votre système.</p>
         </div>
       </details>
 
       <details>
         <summary>« Instrument absent de cette SoundFont — son muet »</summary>
         <div class="answer">
-          <p>La SoundFont chargée ne contient pas l'instrument choisi. Sélectionnez-en un autre dans la liste
-             <em>Instrument</em>, ou revenez à la banque par défaut, qui couvre les 128 instruments General MIDI.</p>
+          <p>La SoundFont chargée n'a pas l'instrument choisi. Prenez-en un autre dans la liste, ou revenez à
+             la banque par défaut, qui couvre les 128 instruments General MIDI.</p>
         </div>
       </details>
 
       <details>
-        <summary>Ma banque .sfz « ne produit aucun son »</summary>
+        <summary>Ma banque .sfz ne produit aucun son</summary>
         <div class="answer">
-          <p>Le fichier <code>.sfz</code> est lu, mais les échantillons (<code>.wav</code>, <code>.flac</code>) qu'il
-             référence sont introuvables. Gardez-les dans le dossier de la banque, avec l'arborescence d'origine :
-             les chemins absolus, ou qui sortent du dossier de la banque, sont refusés par sécurité.</p>
+          <p>Le fichier est lu, mais ses échantillons (<code>.wav</code>, <code>.flac</code>) sont
+             introuvables. Gardez-les dans le dossier de la banque, avec l'arborescence d'origine : les chemins
+             absolus ou qui en sortent sont refusés par sécurité.</p>
         </div>
       </details>
 
       <details>
         <summary>Mon export n'a pas de fichier WAV</summary>
         <div class="answer">
-          <p>Le WAV est rendu par la banque de sons : sans banque chargée, seuls les autres fichiers sont
-             écrits. Chargez une banque <code>.sf2</code> ou <code>.sfz</code>, puis sauvegardez de nouveau.</p>
+          <p>L'export audio fait partie de <a href="offres.html">l'offre Premium</a>. Si vous l'avez, vérifiez
+             qu'une banque est chargée : sans elle, le WAV n'est pas écrit.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Pourquoi ma pièce s'arrête à 12 mesures ?</summary>
+        <div class="answer">
+          <p>C'est la limite de l'offre gratuite. Au-delà, la génération propose Premium. Voir
+             <a href="offres.html">les offres</a>.</p>
         </div>
       </details>
 
       <details>
         <summary>Peut-on donner un instrument différent à la basse ?</summary>
         <div class="answer">
-          <p>Oui, avec l'offre Pro : case <em>Banque pour la basse</em> dans l'onglet <strong>Paramètres</strong>.
-             Voir <a href="offres.html">les offres</a>.</p>
+          <p>Oui, avec Premium : case <em>Banque pour la basse</em> dans <strong>Paramètres</strong>.</p>
         </div>
       </details>
     </div>
@@ -355,7 +361,7 @@
     <div class="cols">
       <div>
         <h4>Sindal</h4>
-        <p style="margin:0">Générateur de musique algorithmique pour Windows et macOS.</p>
+        <p style="margin:0">Générateur de musique pour piano, pour Windows et macOS.</p>
       </div>
       <div>
         <h4>Pages</h4>
@@ -405,7 +411,7 @@
     if (v) {
       document.getElementById("hero-version").textContent = "v" + v;
       document.getElementById("version-line").textContent =
-        "Version " + v + (SindalReleases.date(rel) ? " — publiée le " + SindalReleases.date(rel) : "") +
+        "Version " + v + (SindalReleases.date(rel) ? ", publiée le " + SindalReleases.date(rel) : "") +
         ". Windows 10/11 64 bits, ou macOS Apple Silicon.";
     }
     if (win) {

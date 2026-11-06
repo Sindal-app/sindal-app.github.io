@@ -10,7 +10,7 @@ src/                   SOURCE — c'est ici qu'on édite
 ├── partials/          en-tête et pied de page, un par langue (au lieu de 6 copies)
 └── pages/fr|en/       contenu propre à chaque page
 
-build.mjs              `node build.mjs` → écrit les 6 pages ci-dessous
+build.mjs              `node build.mjs` → écrit les 8 pages ci-dessous, plus sitemap.xml et robots.txt
 
 index.html             ┐
 telecharger.html       │
@@ -24,7 +24,7 @@ releases.js            accès à l'API GitHub — seule constante de dépôt cô
 motion.js              apparitions au défilement, en-tête, section lue, lecteur actif
 .nojekyll              désactive le traitement Jekyll de GitHub Pages
 img/                   logo.png (produit par `tools/IconGen -png`), app-creer.png
-audio/                 6 morceaux composés avec Sindal
+audio/                 7 morceaux composés avec Sindal
 ```
 
 ## Modifier le site
@@ -140,10 +140,9 @@ partout. Ne pas le remplacer par un dessin fait à part : c'est exactement comme
 
 ## Les morceaux
 
-Six pièces composées avec Sindal — générées, puis retouchées dans l'application.
-Cinq MP3 tels que produits, plus `symphonie.m4a` réencodé en AAC 128 kbit/s
-depuis un WAV de 10,5 Mo, ramené à 0,96 Mo : un WAV de cette taille pénalise le
-premier chargement de la page d'accueil.
+Sept pièces composées avec Sindal — générées, puis retouchées dans l'application,
+toutes en MP3 ou AAC (`.m4a`) : un WAV pénalise le premier chargement de la page
+d'accueil.
 
 Noms de fichiers en minuscules sans accent ni espace, volontairement : les
 serveurs Pages sont sensibles à la casse et un nom accentué doit être
@@ -242,3 +241,16 @@ justement les cas à problème. La mesure passe par CDP, avec
 
 Étalon actuel, **6 pages × 6 largeurs (320, 360, 390, 430, 768, 1280 px) : zéro
 débordement**. À refaire après toute modification de mise en page.
+
+---
+
+## Référencement
+
+Tout est produit par `build.mjs`, rien à maintenir à la main :
+
+- `<link rel="canonical">`, Open Graph, carte Twitter et `theme-color` sur chaque page ; titre et description viennent de `src/data.json`.
+- JSON-LD `SoftwareApplication` sur les deux accueils (clé `jsonld` de la page).
+- `sitemap.xml` (avec les alternates `hreflang`) et `robots.txt`, régénérés à chaque build.
+- `urlOf()` est la SEULE fonction qui fabrique l'URL publique d'une page : canonical, hreflang et sitemap restent identiques (les accueils sont `/` et `/en/`, jamais `/index.html`).
+
+**À faire une fois, à la main** : ajouter `https://sindal-app.github.io/` dans Google Search Console (et Bing Webmaster Tools), valider la propriété avec la balise `<meta name="google-site-verification">` ou un fichier, puis soumettre `sitemap.xml`. Aucun moteur n'indexe vite un site neuf sans cette étape.

@@ -1,6 +1,6 @@
 <!--
   ⚠ FICHIER GÉNÉRÉ — NE PAS ÉDITER.
-  Source : src/fr/telecharger.html · fragments : src/partials/ · données : src/data.json
+  Source : src/pages/fr/telecharger.html · fragments : src/partials/ · données : src/data.json
   Régénérer : node build.mjs
 -->
 <!DOCTYPE html>
@@ -8,8 +8,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Télécharger Sindal</title>
-<meta name="description" content="Télécharger Sindal pour Windows ou macOS. Toutes les versions publiées, avec leurs notes de publication.">
+<title>Télécharger Sindal pour Windows et macOS</title>
+<meta name="description" content="Téléchargez Sindal, gratuit, pour Windows 10/11 ou macOS Apple Silicon. Toutes les versions et leurs notes de publication.">
+<link rel="canonical" href="https://sindal-app.github.io/telecharger.html">
+<meta name="theme-color" content="#0B0B14">
+<meta property="og:site_name" content="Sindal">
+<meta property="og:title" content="Télécharger Sindal pour Windows et macOS">
+<meta property="og:description" content="Téléchargez Sindal, gratuit, pour Windows 10/11 ou macOS Apple Silicon. Toutes les versions et leurs notes de publication.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sindal-app.github.io/telecharger.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://sindal-app.github.io/img/logo.png">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="img/logo.png" sizes="any">
 <link rel="alternate" hreflang="fr" href="https://sindal-app.github.io/telecharger.html">
 <link rel="alternate" hreflang="en" href="https://sindal-app.github.io/en/download.html">
@@ -67,9 +77,8 @@
     </div>
 
     <p class="notice" data-reveal>
-      <strong>macOS.</strong> Le paquet n'est ni signé ni notarié. Au premier lancement, macOS refusera de
-      l'ouvrir par un double-clic : faites un clic droit sur l'application, puis « Ouvrir », et confirmez.
-      Les lancements suivants sont normaux.
+      <strong>macOS.</strong> L'application n'est pas signée. Au premier lancement, faites un clic droit
+      dessus, puis « Ouvrir », et confirmez. Ensuite, un double-clic suffit.
     </p>
   </div>
 </section>
@@ -80,8 +89,7 @@
     <p class="eyebrow" data-reveal>Archives</p>
     <h2 data-reveal>Choisir une version</h2>
     <p class="intro" data-reveal>
-      Toutes les versions publiées restent disponibles. Utile pour revenir en arrière si une version vous
-      pose problème — ou pour installer une version précise sur un poste donné.
+      Toutes les versions restent disponibles, au cas où la dernière vous poserait problème.
     </p>
 
     <div class="picker" data-reveal>
@@ -99,10 +107,9 @@
     </div>
 
     <p class="info-box" data-reveal>
-      Sur Windows, installer une version plus ancienne par-dessus une récente n'est pas prévu : désinstallez
-      d'abord Sindal depuis <em>Paramètres → Applications</em>. Vos morceaux enregistrés ne sont pas touchés,
-      ils vivent hors du dossier d'installation. En revanche la désinstallation emporte favoris, langue et
-      journaux, qui partagent le dossier de l'application.
+      Pour revenir à une version plus ancienne sous Windows, désinstallez d'abord Sindal
+      (<em>Paramètres → Applications</em>). Vos morceaux ne sont pas touchés ; seuls favoris, langue et
+      journaux sont effacés.
     </p>
   </div>
 </section>
@@ -114,13 +121,11 @@
     <h2 data-reveal>Ce qu'il vous faut</h2>
 
     <table class="req" data-reveal>
-      <tr><th>Windows</th><td>Windows 10 ou 11, 64 bits (x64). Aucun runtime .NET à installer : il est inclus dans le paquet.</td></tr>
-      <tr><th>macOS</th><td>Apple Silicon (arm64). Les Mac Intel ne sont pas couverts par le paquet publié.</td></tr>
-      <tr><th>Espace disque</th><td>Environ 250 Mo, dont 32 Mo pour la banque de sons incluse.</td></tr>
-      <tr><th>Connexion</th><td>Aucune. L'application fonctionne entièrement hors ligne ; seule la recherche
-          de mise à jour, sur Windows, contacte le réseau.</td></tr>
-      <tr><th>Carte son</th><td>N'importe laquelle. Aucun synthétiseur MIDI externe n'est nécessaire : la
-          synthèse est logicielle et embarquée.</td></tr>
+      <tr><th>Windows</th><td>Windows 10 ou 11, 64 bits. Rien d'autre à installer.</td></tr>
+      <tr><th>macOS</th><td>Apple Silicon (M1 et suivants). Pas de version pour les Mac Intel.</td></tr>
+      <tr><th>Espace disque</th><td>Environ 250 Mo, dont 32 Mo de banque de sons.</td></tr>
+      <tr><th>Connexion</th><td>Aucune. Seule la recherche de mise à jour, sous Windows, utilise le réseau.</td></tr>
+      <tr><th>Son</th><td>Toute carte son suffit : la synthèse est incluse, aucun synthétiseur externe requis.</td></tr>
     </table>
   </div>
 </section>
@@ -130,7 +135,7 @@
     <div class="cols">
       <div>
         <h4>Sindal</h4>
-        <p style="margin:0">Générateur de musique algorithmique pour Windows et macOS.</p>
+        <p style="margin:0">Générateur de musique pour piano, pour Windows et macOS.</p>
       </div>
       <div>
         <h4>Pages</h4>
